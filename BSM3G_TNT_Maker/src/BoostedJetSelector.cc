@@ -210,21 +210,21 @@ void BoostedJetSelector::SetBranches(){
   AddBranch(&BoostedJet_mass,                        "BoostedJet_mass");
   AddBranch(&BoostedJet_Uncorr_pt ,                  "BoostedJet_Uncorr_pt");
   //ID
-  AddBranch(&BoostedJet_pfJetProbabilityBJetTags,                     "BoostedJet_pfJetProbabilityBJetTags");
-  AddBranch(&BoostedJet_pfCombinedMVAV2BJetTags,                      "BoostedJet_pfCombinedMVAV2BJetTags");
+  //AddBranch(&BoostedJet_pfJetProbabilityBJetTags,                     "BoostedJet_pfJetProbabilityBJetTags");
+  //AddBranch(&BoostedJet_pfCombinedMVAV2BJetTags,                      "BoostedJet_pfCombinedMVAV2BJetTags");
   AddBranch(&BoostedJet_pfCombinedInclusiveSecondaryVertexV2BJetTags, "BoostedJet_pfCombinedInclusiveSecondaryVertexV2BJetTags");
-  AddBranch(&BoostedJet_pfCombinedCvsLJetTags                        ,"BoostedJet_pfCombinedCvsLJetTags");
-  AddBranch(&BoostedJet_pfCombinedCvsBJetTags                        ,"BoostedJet_pfCombinedCvsBJetTags");
+  //AddBranch(&BoostedJet_pfCombinedCvsLJetTags                        ,"BoostedJet_pfCombinedCvsLJetTags");
+  //AddBranch(&BoostedJet_pfCombinedCvsBJetTags                        ,"BoostedJet_pfCombinedCvsBJetTags");
   //Energy related variables
   AddBranch(&BoostedJet_neutralHadEnergyFraction,    "BoostedJet_neutralHadEnergyFraction");
   AddBranch(&BoostedJet_neutralEmEmEnergyFraction,   "BoostedJet_neutralEmEmEnergyFraction");
   AddBranch(&BoostedJet_chargedHadronEnergyFraction, "BoostedJet_chargedHadronEnergyFraction");
   AddBranch(&BoostedJet_chargedEmEnergyFraction,     "BoostedJet_chargedEmEnergyFraction");
-  AddBranch(&BoostedJet_muonEnergyFraction,          "BoostedJet_muonEnergyFraction");
+  //AddBranch(&BoostedJet_muonEnergyFraction,          "BoostedJet_muonEnergyFraction");
   AddBranch(&BoostedJet_numberOfConstituents,        "BoostedJet_numberOfConstituents");
   AddBranch(&BoostedJet_chargedMultiplicity,         "BoostedJet_chargedMultiplicity");
-  AddBranch(&BoostedJet_electronEnergy,              "BoostedJet_electronEnergy");
-  AddBranch(&BoostedJet_photonEnergy,                "BoostedJet_photonEnergy");
+  //AddBranch(&BoostedJet_electronEnergy,              "BoostedJet_electronEnergy");
+  //AddBranch(&BoostedJet_photonEnergy,                "BoostedJet_photonEnergy");
   //Boosted jet prop 
   AddBranch(&BoostedJet_tau1,           "BoostedJet_tau1");
   AddBranch(&BoostedJet_tau2,           "BoostedJet_tau2");

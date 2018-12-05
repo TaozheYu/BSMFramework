@@ -172,7 +172,7 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
     }
     patElectron_energyCorr.push_back(Ecorr);
     //Corrections
-    if(el->energy()!=0) patElectron_energySF.push_back(el->userFloat("ecalTrkEnergyPostCorr")/el->energy());
+    /*if(el->energy()!=0) patElectron_energySF.push_back(el->userFloat("ecalTrkEnergyPostCorr")/el->energy());
     else patElectron_energySF.push_back(1.0);
     patElectron_ecalEnergyErrPostCorr.push_back(el->userFloat("ecalEnergyErrPostCorr"));
     patElectron_ecalEnergyErrPreCorr.push_back(el->userFloat("ecalEnergyErrPreCorr"));
@@ -198,7 +198,7 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
     patElectron_energySigmaRhoUp.push_back(el->userFloat("energySigmaRhoUp"));
     patElectron_energySigmaUp.push_back(el->userFloat("energySigmaUp"));
     patElectron_energySigmaValue.push_back(el->userFloat("energySigmaValue"));
-    patElectron_energySmearNrSigma.push_back(el->userFloat("energySmearNrSigma"));
+    patElectron_energySmearNrSigma.push_back(el->userFloat("energySmearNrSigma"));*/
     //Charge
     patElectron_charge.push_back(el->charge());
     patElectron_isGsfCtfScPixChargeConsistent.push_back(el->isGsfCtfScPixChargeConsistent());
@@ -637,15 +637,15 @@ void ElectronPatSelector::SetBranches(){
   AddBranch(&patElectron_phi          ,"patElectron_phi");
   AddBranch(&patElectron_energy       ,"patElectron_energy");
   AddBranch(&patElectron_energyCorr   ,"patElectron_energyCorr");
-  AddBranch(&patElectron_px           ,"patElectron_px");
-  AddBranch(&patElectron_py           ,"patElectron_py");
-  AddBranch(&patElectron_pz           ,"patElectron_pz");
-  AddBranch(&patElectron_p            ,"patElectron_p");
-  AddBranch(&patElectron_Et           ,"patElectron_Et");
+  //AddBranch(&patElectron_px           ,"patElectron_px");
+  //AddBranch(&patElectron_py           ,"patElectron_py");
+  //AddBranch(&patElectron_pz           ,"patElectron_pz");
+  //AddBranch(&patElectron_p            ,"patElectron_p");
+  //AddBranch(&patElectron_Et           ,"patElectron_Et");
   AddBranch(&patElectron_SCeta        ,"patElectron_SCeta");
   AddBranch(&patElectron_inCrack      ,"patElectron_inCrack");
   //Corrections
-  AddBranch(&patElectron_energySF                , "patElectron_energySF");
+  /*AddBranch(&patElectron_energySF                , "patElectron_energySF");
   AddBranch(&patElectron_ecalEnergyErrPostCorr   , "patElectron_ecalEnergyErrPostCorr");
   AddBranch(&patElectron_ecalEnergyErrPreCorr    , "patElectron_ecalEnergyErrPreCorr");
   AddBranch(&patElectron_ecalEnergyPostCorr      , "patElectron_ecalEnergyPostCorr");
@@ -670,11 +670,11 @@ void ElectronPatSelector::SetBranches(){
   AddBranch(&patElectron_energySigmaRhoUp        , "patElectron_energySigmaRhoUp");
   AddBranch(&patElectron_energySigmaUp           , "patElectron_energySigmaUp");
   AddBranch(&patElectron_energySigmaValue        , "patElectron_energySigmaValue");
-  AddBranch(&patElectron_energySmearNrSigma      , "patElectron_energySmearNrSigma");
+  AddBranch(&patElectron_energySmearNrSigma      , "patElectron_energySmearNrSigma");*/
   //Charge
   AddBranch(&patElectron_charge       ,"patElectron_charge");
-  AddBranch(&patElectron_isGsfCtfScPixChargeConsistent            ,"patElectron_isGsfCtfScPixChargeConsistent");
-  AddBranch(&patElectron_isGsfScPixChargeConsistent               ,"patElectron_isGsfScPixChargeConsistent");
+  //AddBranch(&patElectron_isGsfCtfScPixChargeConsistent            ,"patElectron_isGsfCtfScPixChargeConsistent");
+  //AddBranch(&patElectron_isGsfScPixChargeConsistent               ,"patElectron_isGsfScPixChargeConsistent");
   //ID
   AddBranch(&passVetoId_              ,"patElectron_isPassVeto");          
   AddBranch(&passLooseId_             ,"patElectron_isPassLoose");
@@ -682,7 +682,7 @@ void ElectronPatSelector::SetBranches(){
   AddBranch(&passTightId_             ,"patElectron_isPassTight");
   AddBranch(&passHEEPId_              ,"patElectron_isPassHEEPId");
   AddBranch(&passMvatrigId_           ,"patElectron_isPassMvatrig");
-  AddBranch(&passMvanontrigId_        ,"patElectron_isPassMvanontrig");
+  /*AddBranch(&passMvanontrigId_        ,"patElectron_isPassMvanontrig");
   AddBranch(&passMvatrigwp90Id_       ,"patElectron_isPassMvatrigwp90");
   AddBranch(&passMvanontrigwp90Id_    ,"patElectron_isPassMvanontrigwp90");
   AddBranch(&passMvatrigwpLooseId_       ,"patElectron_isPassMvatrigwpLoose");
@@ -695,16 +695,16 @@ void ElectronPatSelector::SetBranches(){
   AddBranch(&patElectron_mvaCategory_Trig_ ,"patElectron_mvaCategory_Trig");
   AddBranch(&passMvaHZZwpLooseId_       ,"patElectron_isPassMvaHZZwpLoose");
   AddBranch(&patElectron_mvaValue_HZZ_    ,"patElectron_mvaValue_HZZ");
-  AddBranch(&patElectron_mvaCategory_HZZ_ ,"patElectron_mvaCategory_HZZ");
+  AddBranch(&patElectron_mvaCategory_HZZ_ ,"patElectron_mvaCategory_HZZ");*/
   //Isolation
-  AddBranch(&patElectron_isoChargedHadrons        ,"patElectron_isoChargedHadrons");
+  /*AddBranch(&patElectron_isoChargedHadrons        ,"patElectron_isoChargedHadrons");
   AddBranch(&patElectron_isoNeutralHadrons        ,"patElectron_isoNeutralHadrons");
   AddBranch(&patElectron_isoPhotons               ,"patElectron_isoPhotons");
   AddBranch(&patElectron_isoPU                    ,"patElectron_isoPU");
   AddBranch(&patElectron_relIsoDeltaBeta          ,"patElectron_relIsoDeltaBeta");
   AddBranch(&patElectron_relIsoRhoEA              ,"patElectron_relIsoRhoEA");
   AddBranch(&patElectron_dr03EcalRecHitSumEt      ,"patElectron_dr03EcalRecHitSumEt");
-  AddBranch(&patElectron_dr03HcalDepth1TowerSumEt ,"patElectron_dr03HcalDepth1TowerSumEt");
+  AddBranch(&patElectron_dr03HcalDepth1TowerSumEt ,"patElectron_dr03HcalDepth1TowerSumEt");*/
   AddBranch(&patElectron_isolPtTracks             ,"patElectron_isolPtTracks");
   AddBranch(&patElectron_ecalPFClusterIso         ,"patElectron_ecalPFClusterIso");
   AddBranch(&patElectron_hcalPFClusterIso         ,"patElectron_hcalPFClusterIso");
@@ -712,24 +712,24 @@ void ElectronPatSelector::SetBranches(){
   AddBranch(&patElectron_dEtaIn                ,"patElectron_dEtaIn");
   AddBranch(&patElectron_dPhiIn                ,"patElectron_dPhiIn");
   AddBranch(&patElectron_full5x5_sigmaIetaIeta ,"patElectron_full5x5_sigmaIetaIeta");
-  AddBranch(&patElectron_full5x5_e2x5Max       ,"patElectron_full5x5_e2x5Max");
-  AddBranch(&patElectron_full5x5_e5x5          ,"patElectron_full5x5_e5x5");
-  AddBranch(&patElectron_full5x5_e1x5          ,"patElectron_full5x5_e1x5");
+  //AddBranch(&patElectron_full5x5_e2x5Max       ,"patElectron_full5x5_e2x5Max");
+  //AddBranch(&patElectron_full5x5_e5x5          ,"patElectron_full5x5_e5x5");
+  //AddBranch(&patElectron_full5x5_e1x5          ,"patElectron_full5x5_e1x5");
   AddBranch(&patElectron_hOverE                ,"patElectron_hOverE");
-  AddBranch(&patElectron_ooEmooP               ,"patElectron_ooEmooP");
+  //AddBranch(&patElectron_ooEmooP               ,"patElectron_ooEmooP");
   AddBranch(&passConversionVeto_               ,"patElectron_passConversionVeto"); 
-  AddBranch(&expectedMissingInnerHits          ,"patElectron_expectedMissingInnerHits");
-  AddBranch(&patElectron_gsfTrack_ndof         ,"patElectron_gsfTrack_ndof");
-  AddBranch(&patElectron_gsfTrack_normChi2     ,"patElectron_gsfTrack_normChi2");
+  //AddBranch(&expectedMissingInnerHits          ,"patElectron_expectedMissingInnerHits");
+  //AddBranch(&patElectron_gsfTrack_ndof         ,"patElectron_gsfTrack_ndof");
+  //AddBranch(&patElectron_gsfTrack_normChi2     ,"patElectron_gsfTrack_normChi2");
   //IP
-  AddBranch(&patElectron_gsfTrack_dz_pv  ,"patElectron_gsfTrack_dz_pv");
+  /*AddBranch(&patElectron_gsfTrack_dz_pv  ,"patElectron_gsfTrack_dz_pv");
   AddBranch(&patElectron_gsfTrack_dxy_pv ,"patElectron_gsfTrack_dxy_pv");
   AddBranch(&patElectron_d0              ,"patElectron_d0");
   AddBranch(&patElectron_dzError         ,"patElectron_dzError");
   AddBranch(&patElectron_dxyError        ,"patElectron_dxyError");
   AddBranch(&patElectron_gsfTrack_vtx    ,"patElectron_gsfTrack_vtx");
   AddBranch(&patElectron_gsfTrack_vty    ,"patElectron_gsfTrack_vty");
-  AddBranch(&patElectron_gsfTrack_vtz    ,"patElectron_gsfTrack_vtz");
+  AddBranch(&patElectron_gsfTrack_vtz    ,"patElectron_gsfTrack_vtz");*/
   if(_AJVar){
     AddBranch(&patElectron_gsfTrack_dz_bs            ,"patElectron_gsfTrack_dz_bs");
     AddBranch(&patElectron_gsfTrack_dxy_bs           ,"patElectron_gsfTrack_dxy_bs");
@@ -853,7 +853,7 @@ void ElectronPatSelector::Clear(){
   patElectron_SCeta.clear();
   patElectron_inCrack.clear();
   //Corrections
-  patElectron_energySF.clear();
+  /*patElectron_energySF.clear();
   patElectron_ecalEnergyErrPostCorr.clear();
   patElectron_ecalEnergyErrPreCorr.clear();
   patElectron_ecalEnergyPostCorr.clear();
@@ -878,7 +878,7 @@ void ElectronPatSelector::Clear(){
   patElectron_energySigmaRhoUp.clear();
   patElectron_energySigmaUp.clear();
   patElectron_energySigmaValue.clear();
-  patElectron_energySmearNrSigma.clear();
+  patElectron_energySmearNrSigma.clear();*/
   //Charge
   patElectron_charge.clear(); 
   patElectron_isGsfCtfScPixChargeConsistent.clear();

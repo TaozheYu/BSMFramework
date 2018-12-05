@@ -351,45 +351,45 @@ void JetSelector::SetBranches(){
   AddBranch(&Jet_pt        ,"Jet_pt");
   AddBranch(&Jet_eta       ,"Jet_eta");
   AddBranch(&Jet_phi       ,"Jet_phi");
-  AddBranch(&Jet_energy    ,"Jet_energy");
+  //AddBranch(&Jet_energy    ,"Jet_energy");
   AddBranch(&Jet_mass      ,"Jet_mass");
-  AddBranch(&Jet_px        ,"Jet_px");
-  AddBranch(&Jet_py        ,"Jet_py");
-  AddBranch(&Jet_pz        ,"Jet_pz");
+  //AddBranch(&Jet_px        ,"Jet_px");
+  //AddBranch(&Jet_py        ,"Jet_py");
+  //AddBranch(&Jet_pz        ,"Jet_pz");
   AddBranch(&Jet_Uncorr_pt ,"Jet_Uncorr_pt");
-  AddBranch(&Jet_L1corr_pt ,"Jet_L1corr_pt");
+  //AddBranch(&Jet_L1corr_pt ,"Jet_L1corr_pt");
   //ID
   AddBranch(&Jet_pfCombinedInclusiveSecondaryVertexV2BJetTags ,"Jet_pfCombinedInclusiveSecondaryVertexV2BJetTags");
-  AddBranch(&Jet_pfCombinedMVAV2BJetTags                      ,"Jet_pfCombinedMVAV2BJetTags");
-  AddBranch(&Jet_pfJetProbabilityBJetTags                     ,"Jet_pfJetProbabilityBJetTags");
-  AddBranch(&Jet_pfCombinedCvsLJetTags                        ,"Jet_pfCombinedCvsLJetTags");
-  AddBranch(&Jet_pfCombinedCvsBJetTags                        ,"Jet_pfCombinedCvsBJetTags");
+  //AddBranch(&Jet_pfCombinedMVAV2BJetTags                      ,"Jet_pfCombinedMVAV2BJetTags");
+  //AddBranch(&Jet_pfJetProbabilityBJetTags                     ,"Jet_pfJetProbabilityBJetTags");
+  //AddBranch(&Jet_pfCombinedCvsLJetTags                        ,"Jet_pfCombinedCvsLJetTags");
+  //AddBranch(&Jet_pfCombinedCvsBJetTags                        ,"Jet_pfCombinedCvsBJetTags");
   AddBranch(&Jet_pfDeepCSVBJetTags                           ,"Jet_pfDeepCSVBJetTags");
   AddBranch(&Jet_pfDeepCSVCvsLJetTags                        ,"Jet_pfDeepCSVCvsLJetTags");
   AddBranch(&Jet_pfDeepCSVCvsBJetTags                        ,"Jet_pfDeepCSVCvsBJetTags");
-  AddBranch(&Jet_pileupId                                     ,"Jet_pileupId");
+  /*AddBranch(&Jet_pileupId                                     ,"Jet_pileupId");
   AddBranch(&Jet_isPFJet                                      ,"Jet_isPFJet");
   AddBranch(&Jet_isCaloJet                                    ,"Jet_isCaloJet");
   AddBranch(&Jet_qg               ,"Jet_qg");
   AddBranch(&Jet_axis2            ,"Jet_axis2");
   AddBranch(&Jet_ptD              ,"Jet_ptD");
-  AddBranch(&Jet_mult             ,"Jet_mult");
+  AddBranch(&Jet_mult             ,"Jet_mult");*/
   //Energy
   AddBranch(&Jet_neutralHadEnergyFraction    ,"Jet_neutralHadEnergyFraction");
   AddBranch(&Jet_neutralEmEnergyFraction     ,"Jet_neutralEmEnergyFraction");
   AddBranch(&Jet_chargedHadronEnergyFraction ,"Jet_chargedHadronEnergyFraction");
   AddBranch(&Jet_chargedEmEnergyFraction     ,"Jet_chargedEmEnergyFraction");
-  AddBranch(&Jet_muonEnergyFraction          ,"Jet_muonEnergyFraction");
+  /*AddBranch(&Jet_muonEnergyFraction          ,"Jet_muonEnergyFraction");
   AddBranch(&Jet_electronEnergy              ,"Jet_electronEnergy");
-  AddBranch(&Jet_photonEnergy                ,"Jet_photonEnergy");
+  AddBranch(&Jet_photonEnergy                ,"Jet_photonEnergy");*/
   AddBranch(&Jet_emEnergyFraction            ,"Jet_emEnergyFraction");
   //Other prop
   AddBranch(&Jet_numberOfConstituents ,"Jet_numberOfConstituents");
   AddBranch(&Jet_chargedMultiplicity  ,"Jet_chargedMultiplicity");
-  AddBranch(&Jet_vtxMass              ,"Jet_vtxMass");
+  /*AddBranch(&Jet_vtxMass              ,"Jet_vtxMass");
   AddBranch(&Jet_vtxNtracks           ,"Jet_vtxNtracks");
   AddBranch(&Jet_vtx3DVal             ,"Jet_vtx3DVal");
-  AddBranch(&Jet_vtx3DSig             ,"Jet_vtx3DSig");
+  AddBranch(&Jet_vtx3DSig             ,"Jet_vtx3DSig");*/
   //Jet Energy Corrections and Uncertainties
   AddBranch(&Jet_JesSF                ,"Jet_JesSF");
   AddBranch(&Jet_JesSFup              ,"Jet_JesSFup");

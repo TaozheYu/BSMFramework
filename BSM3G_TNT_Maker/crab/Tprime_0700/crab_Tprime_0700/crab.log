@@ -1,0 +1,162 @@
+runTauID: not is_above_cmssw_version(10, 0, 0). Will update the list of available in DB samples to access dR0p32017v2
+loadMVA_WPs_run2_2017: performed
+DEBUG 2018-12-03 15:38:20,350: 	 Executing command: 'submit'
+DEBUG 2018-12-03 15:38:20,351: 	 Found CRAB cache file /afs/cern.ch/user/t/tayu/.crab3
+DEBUG 2018-12-03 15:38:20,372: 	 Checking credentials
+DEBUG 2018-12-03 15:38:20,373: 	 Found proxy file /tmp/x509up_u93266
+DEBUG 2018-12-03 15:38:20,373: 	 Getting proxy life time left
+DEBUG 2018-12-03 15:38:21,605: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u93266 -timeleft
+ output : 76233
+
+ error: 
+ retcode : 0
+DEBUG 2018-12-03 15:38:22,941: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u93266 -actimeleft
+ output : 76231
+
+ error: 
+ retcode : 0
+DEBUG 2018-12-03 15:38:22,942: 	 Proxy valid for 21:10:33 hours
+DEBUG 2018-12-03 15:38:22,943: 	 Will use CRAB Analysis plugin (i.e. will run an analysis job type).
+DEBUG 2018-12-03 15:38:23,129: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=tayu/CN=799968/CN=Taozhe Yu
+
+ error: 
+ retcode : 0
+DEBUG 2018-12-03 15:38:23,130: 	 Checking credentials
+DEBUG 2018-12-03 15:38:23,130: 	 Found proxy file /tmp/x509up_u93266
+DEBUG 2018-12-03 15:38:23,130: 	 Getting proxy life time left
+DEBUG 2018-12-03 15:38:24,355: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u93266 -timeleft
+ output : 76230
+
+ error: 
+ retcode : 0
+DEBUG 2018-12-03 15:38:25,688: 	 Executing : 
+ command : voms-proxy-info -file /tmp/x509up_u93266 -actimeleft
+ output : 76228
+
+ error: 
+ retcode : 0
+DEBUG 2018-12-03 15:38:25,689: 	 Proxy valid for 21:10:30 hours
+DEBUG 2018-12-03 15:38:27,236: 	 Executing : 
+ command : env X509_USER_PROXY=/tmp/x509up_u93266 voms-proxy-info -fqan
+ output : /cms/Role=NULL/Capability=NULL
+
+ error: 
+ retcode : 0
+DEBUG 2018-12-03 15:38:28,272: 	 Registering user credentials for server /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+DEBUG 2018-12-03 15:38:28,394: 	 Executing : 
+ command : openssl x509 -in ~/.globus/usercert.pem -subject -noout
+ output : subject= /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=tayu/CN=799968/CN=Taozhe Yu
+
+ error: 
+ retcode : 0
+DEBUG 2018-12-03 15:38:28,396: 	 Getting myproxy life time left for myproxy.cern.ch
+DEBUG 2018-12-03 15:38:28,396: 	 Calculating hash of /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=tayu/CN=799968/CN=Taozhe Yu_cmsweb.cern.ch for credential name
+DEBUG 2018-12-03 15:38:28,707: 	 Executing : 
+ command : myproxy-info -l 9f4b01bc4a4efc8c405fe8e76fd90f9c51cfc546 -s myproxy.cern.ch
+ output : username: 9f4b01bc4a4efc8c405fe8e76fd90f9c51cfc546
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=tayu/CN=799968/CN=Taozhe Yu
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=vocms(052|058|030|0118|0105|0109).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(02|01).cern.ch
+  timeleft: 549:52:15  (22.9 days)
+
+ error: 
+ retcode : 0
+DEBUG 2018-12-03 15:38:28,708: 	 Myproxy is valid: 1979535
+DEBUG 2018-12-03 15:38:28,708: 	 Command use: submit
+DEBUG 2018-12-03 15:38:28,708: 	 Options use: ['--config', <WMCore.Configuration.Configuration object at 0x7fb862ab7050>]
+DEBUG 2018-12-03 15:38:29,658: 	 CRABClient version: 3.3.1809
+DEBUG 2018-12-03 15:38:29,659: 	 Instance is prod
+DEBUG 2018-12-03 15:38:29,659: 	 Server base url is cmsweb.cern.ch
+DEBUG 2018-12-03 15:38:29,659: 	 Command url /crabserver/prod/workflow
+DEBUG 2018-12-03 15:38:29,659: 	 Started submission
+DEBUG 2018-12-03 15:38:29,659: 	 Working on /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/crab/Tprime_0700/crab_Tprime_0700
+DEBUG 2018-12-03 15:38:30,659: 	 Loading required information from the environment
+DEBUG 2018-12-03 15:38:30,659: 	 Found CMSSW_9_4_9_cand2 for slc6_amd64_gcc630 with base /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2
+DEBUG 2018-12-03 15:38:30,659: 	 Loading required information from the environment
+DEBUG 2018-12-03 15:38:30,659: 	 Found CMSSW_9_4_9_cand2 for slc6_amd64_gcc630 with base /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2
+DEBUG 2018-12-03 15:38:30,703: 	 UNIQUE NAME: tarUUID 79c6f26e-acbc-4fef-b2ef-e2f51508bad9 
+DEBUG 2018-12-03 15:38:30,705: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.transferLogs = True
+config.General.workArea = 'Tprime_0700'
+config.General.requestName = 'Tprime_0700'
+config.section_('JobType')
+config.JobType.psetName = '/afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_MC2016.py'
+config.JobType.pluginName = 'Analysis'
+config.JobType.pyCfgParams = ['ofName=Tprime_0700']
+config.JobType.sendExternalFolder = True
+config.JobType.maxMemoryMB = 2000
+config.section_('Data')
+config.Data.inputDataset = '/TprimeBToTZ_M-700_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM'
+config.Data.allowNonValidInputDataset = True
+config.Data.totalUnits = 40000
+config.Data.unitsPerJob = 1
+config.Data.inputDBS = 'global'
+config.Data.splitting = 'FileBased'
+config.Data.outputDatasetTag = 'Tprime_0700'
+config.Data.outLFNDirBase = '/store/user/tayu/'
+config.section_('Site')
+config.Site.storageSite = 'T2_CN_Beijing'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2018-12-03 15:38:30,705: 	 self.config.JobType.psetName: /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_MC2016.py
+INFO 2018-12-03 15:38:30,705: 	 Importing CMSSW configuration /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_MC2016.py
+DEBUG 2018-12-03 15:38:30,706: 	 Additional parameters for the CMSSW configuration are: ['ofName=Tprime_0700']
+INFO 2018-12-03 15:38:31,774: 	 Finished importing CMSSW configuration /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_MC2016.py
+DEBUG 2018-12-03 15:38:31,775: 	 Writing CMSSW configuration to /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/crab/Tprime_0700/crab_Tprime_0700/inputs/PSet.py
+DEBUG 2018-12-03 15:38:32,357: 	 The following EDM output files will be collected: []
+DEBUG 2018-12-03 15:38:32,357: 	 The following TFile output files will be collected: ['OutTree.root']
+DEBUG 2018-12-03 15:38:32,358: 	 The following user output files will be collected: []
+DEBUG 2018-12-03 15:38:32,358: 	 Loading required information from the environment
+DEBUG 2018-12-03 15:38:32,358: 	 Found CMSSW_9_4_9_cand2 for slc6_amd64_gcc630 with base /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2
+DEBUG 2018-12-03 15:38:32,358: 	 Making tarball in /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/crab/Tprime_0700/crab_Tprime_0700/inputs/79c6f26e-acbc-4fef-b2ef-e2f51508bad9default.tgz
+DEBUG 2018-12-03 15:38:32,359: 	 Checking directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/lib
+DEBUG 2018-12-03 15:38:32,360: 	 Adding directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/lib to tarball
+DEBUG 2018-12-03 15:38:35,769: 	 Checking directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/biglib
+DEBUG 2018-12-03 15:38:35,770: 	 Adding directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/biglib to tarball
+DEBUG 2018-12-03 15:38:35,771: 	 Checking directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/module
+DEBUG 2018-12-03 15:38:35,771: 	 Checking directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/external
+DEBUG 2018-12-03 15:38:35,771: 	 Adding directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/external to tarball
+DEBUG 2018-12-03 15:38:38,810: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/RecoEgamma/EgammaTools/data to tarball
+DEBUG 2018-12-03 15:38:38,835: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/RecoEgamma/EgammaTools/interface to tarball
+DEBUG 2018-12-03 15:38:38,854: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/RecoEgamma/EgammaPhotonProducers/interface to tarball
+DEBUG 2018-12-03 15:38:38,866: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/RecoEgamma/ElectronIdentification/data to tarball
+DEBUG 2018-12-03 15:38:42,040: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/RecoEgamma/ElectronIdentification/interface to tarball
+DEBUG 2018-12-03 15:38:42,077: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/RecoEgamma/PhotonIdentification/data to tarball
+DEBUG 2018-12-03 15:38:42,997: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/RecoEgamma/PhotonIdentification/interface to tarball
+DEBUG 2018-12-03 15:38:43,007: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/EgammaAnalysis/ElectronTools/data to tarball
+DEBUG 2018-12-03 15:38:43,391: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/EgammaAnalysis/ElectronTools/interface to tarball
+DEBUG 2018-12-03 15:38:43,414: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/CommonTools/ParticleFlow/interface to tarball
+DEBUG 2018-12-03 15:38:43,437: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/Configuration/PyReleaseValidation/data to tarball
+DEBUG 2018-12-03 15:38:43,444: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/JetMETCorrections/Type1MET/data to tarball
+DEBUG 2018-12-03 15:38:43,448: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/JetMETCorrections/Type1MET/interface to tarball
+DEBUG 2018-12-03 15:38:43,459: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/PhysicsTools/NanoAOD/interface to tarball
+DEBUG 2018-12-03 15:38:43,465: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/PhysicsTools/PatAlgos/interface to tarball
+DEBUG 2018-12-03 15:38:43,497: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/PhysicsTools/PatUtils/data to tarball
+DEBUG 2018-12-03 15:38:43,760: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/PhysicsTools/PatUtils/interface to tarball
+DEBUG 2018-12-03 15:38:43,795: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/RecoMET/METFilters/data to tarball
+DEBUG 2018-12-03 15:38:43,797: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/RecoMET/METFilters/interface to tarball
+DEBUG 2018-12-03 15:38:43,844: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/data to tarball
+DEBUG 2018-12-03 15:39:09,006: 	 Adding data directory /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/interface to tarball
+DEBUG 2018-12-03 15:39:10,200: 	 Uploading archive /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/crab/Tprime_0700/crab_Tprime_0700/inputs/79c6f26e-acbc-4fef-b2ef-e2f51508bad9default.tgz (55 MB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2018-12-03 15:39:35,066: 	 Loading required information from the environment
+DEBUG 2018-12-03 15:39:35,067: 	 Found CMSSW_9_4_9_cand2 for slc6_amd64_gcc630 with base /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2
+DEBUG 2018-12-03 15:39:35,067: 	 Making tarball in /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/crab/Tprime_0700/crab_Tprime_0700/inputs/debugFiles.tgz
+DEBUG 2018-12-03 15:39:35,073: 	 Uploading archive /afs/cern.ch/work/t/tayu/private/Tprime_dineutrino_2016/CMSSW_9_4_9_cand2/src/BSMFramework/BSM3G_TNT_Maker/crab/Tprime_0700/crab_Tprime_0700/inputs/debugFiles.tgz (5 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch/crabcache
+DEBUG 2018-12-03 15:39:36,065: 	 Result uploading input files: 296cd689b993250801f4a6af2049c17cb18fd0d2a8292cc83a08984cfba5ab0f.tar.gz 
+WARNING 2018-12-03 15:39:36,065: 	 Warning: The following output files will not be published, as they are not EDM files: ['OutTree.root']
+INFO 2018-12-03 15:39:36,067: 	 Sending the request to the server
+DEBUG 2018-12-03 15:39:36,067: 	 Submitting {'maxjobruntime': 1250, 'extrajdl': [], 'ignorelocality': 0, 'savelogsflag': 1, 'useparent': 0, 'asyncdest': 'T2_CN_Beijing', 'algoargs': 1, 'cachefilename': '296cd689b993250801f4a6af2049c17cb18fd0d2a8292cc83a08984cfba5ab0f.tar.gz', 'numcores': 1, 'addoutputfiles': [], 'generator': 'pythia', 'maxmemory': 2000, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'priority': 10, 'jobsw': 'CMSSW_9_4_9_cand2', 'edmoutfiles': [], 'userfiles': [], 'primarydataset': '', 'inputdata': '/TprimeBToTZ_M-700_LH_TuneCP5_13TeV-madgraph-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM', 'lfn': '/store/user/tayu/', 'dryrun': 0, 'workflow': 'crab_Tprime_0700', 'cacheurl': u'https://cmsweb.cern.ch/crabcache', 'nonprodsw': 0, 'tfileoutfiles': ['OutTree.root'], 'oneEventMode': 0, 'debugfilename': '4b125ab035bc09b89fd2980eea7d8e067aeaf5756807b92bcc9e5372fc17a59f.tar.gz', 'saveoutput': 1, 'publication': 1, 'jobarch': 'slc6_amd64_gcc630', 'totalunits': 40000, 'splitalgo': 'FileBased', 'ignoreglobalblacklist': 0, 'nonvaliddata': 1, 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'publishgroupname': 0, 'jobtype': 'Analysis', 'publishname2': 'Tprime_0700'} 
+DEBUG 2018-12-03 15:39:36,068: 	 Encoded submit request: maxjobruntime=1250&ignorelocality=0&savelogsflag=1&useparent=0&asyncdest=T2_CN_Beijing&algoargs=1&cachefilename=296cd689b993250801f4a6af2049c17cb18fd0d2a8292cc83a08984cfba5ab0f.tar.gz&numcores=1&generator=pythia&maxmemory=2000&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&priority=10&jobsw=CMSSW_9_4_9_cand2&primarydataset=&inputdata=%2FTprimeBToTZ_M-700_LH_TuneCP5_13TeV-madgraph-pythia8%2FRunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1%2FMINIAODSIM&lfn=%2Fstore%2Fuser%2Ftayu%2F&dryrun=0&workflow=crab_Tprime_0700&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2Fcrabcache&nonprodsw=0&oneEventMode=0&debugfilename=4b125ab035bc09b89fd2980eea7d8e067aeaf5756807b92bcc9e5372fc17a59f.tar.gz&saveoutput=1&publication=1&jobarch=slc6_amd64_gcc630&totalunits=40000&splitalgo=FileBased&ignoreglobalblacklist=0&nonvaliddata=1&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&publishgroupname=0&jobtype=Analysis&publishname2=Tprime_0700&tfileoutfiles=OutTree.root
+DEBUG 2018-12-03 15:39:37,390: 	 Result: {u'result': [{u'RequestName': u'181203_143937:tayu_crab_Tprime_0700'}]}
+INFO 2018-12-03 15:39:37,393: 	 Success: Your task has been delivered to the CRAB3 server.
+INFO 2018-12-03 15:39:37,393: 	 Task name: 181203_143937:tayu_crab_Tprime_0700
+INFO 2018-12-03 15:39:37,393: 	 Please use 'crab status' to check how the submission process proceeds.
+DEBUG 2018-12-03 15:39:37,394: 	 About to return

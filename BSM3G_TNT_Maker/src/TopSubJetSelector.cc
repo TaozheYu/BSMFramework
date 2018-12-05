@@ -122,13 +122,13 @@ void TopSubJetSelector::SetBranches(){
   AddBranch(&TopSubjet_energy,   "TopSubjet_energy");
   AddBranch(&TopSubjet_mass,     "TopSubjet_mass");
   //ID
-  AddBranch(&TopSubjet_Btag0,    "TopSubjet_Btag0");
+  /*AddBranch(&TopSubjet_Btag0,    "TopSubjet_Btag0");
   AddBranch(&TopSubjet_Btag1,    "TopSubjet_Btag1");
   AddBranch(&TopSubjet_Btag2,    "TopSubjet_Btag2");
   //Jet Energy Corrections and Uncertainties
   AddBranch(&TopSubjet_JesSF    ,"TopSubjet_JesSF");
   AddBranch(&TopSubjet_JesSFup  ,"TopSubjet_JesSFup");
-  AddBranch(&TopSubjet_JesSFdown,"TopSubjet_JesSFdown");
+  AddBranch(&TopSubjet_JesSFdown,"TopSubjet_JesSFdown");*/
   if(debug_) std::cout<<"set branches"<<std::endl;
 }
 void TopSubJetSelector::Clear(){

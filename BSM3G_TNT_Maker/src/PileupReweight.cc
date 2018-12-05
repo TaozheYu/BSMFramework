@@ -8,8 +8,8 @@ PileupReweight::PileupReweight(std::string name, TTree* tree, bool debug, const 
   PUInfo_         = ic.consumes<std::vector< PileupSummaryInfo> >(edm::InputTag("slimmedAddPileupInfo"));
   PUReweightfile_ = iConfig.getParameter<edm::FileInPath>("PUReweightfile");
   //MyPUReweightfile_ = iConfig.getParameter<edm::FileInPath>("MyPUReweightfile");
-  MinBiasUpReweightfile_ = iConfig.getParameter<edm::FileInPath>("MinBiasUpReweightfile");
-  MinBiasDownReweightfile_ = iConfig.getParameter<edm::FileInPath>("MinBiasDownReweightfile");
+  //MinBiasUpReweightfile_ = iConfig.getParameter<edm::FileInPath>("MinBiasUpReweightfile");
+  //MinBiasDownReweightfile_ = iConfig.getParameter<edm::FileInPath>("MinBiasDownReweightfile");
   // Get data distribution from file
   const char *filePath = PUReweightfile_.fullPath().c_str();
   TFile file(filePath, "READ");
@@ -36,7 +36,7 @@ PileupReweight::PileupReweight(std::string name, TTree* tree, bool debug, const 
   Myfile.Close();
   */
   // Get MydataUp distribution from file
-  const char *MinBiasUpfilePath = MinBiasUpReweightfile_.fullPath().c_str();
+  /*const char *MinBiasUpfilePath = MinBiasUpReweightfile_.fullPath().c_str();
   TFile MinBiasUpfile(MinBiasUpfilePath, "READ");
   TH1* MinBiasUphist = NULL;
   MinBiasUpfile.GetObject("pileup",MinBiasUphist);
@@ -45,10 +45,10 @@ PileupReweight::PileupReweight(std::string name, TTree* tree, bool debug, const 
     throw std::exception();
   }
   MinBiasUphist->SetDirectory(0);
-  MinBiasUpfile.Close();
+  MinBiasUpfile.Close();*/
   
   // Get MydataDown distribution from file
-  const char *MinBiasDownfilePath = MinBiasDownReweightfile_.fullPath().c_str();
+  /*const char *MinBiasDownfilePath = MinBiasDownReweightfile_.fullPath().c_str();
   TFile MinBiasDownfile(MinBiasDownfilePath, "READ");
   TH1* MinBiasDownhist = NULL;
   MinBiasDownfile.GetObject("pileup",MinBiasDownhist);
@@ -57,7 +57,7 @@ PileupReweight::PileupReweight(std::string name, TTree* tree, bool debug, const 
     throw std::exception();
   }
   MinBiasDownhist->SetDirectory(0);
-  MinBiasDownfile.Close();
+  MinBiasDownfile.Close();*/
   
   // Computing weights
   // Store probabilites for each pu bin
@@ -71,9 +71,9 @@ PileupReweight::PileupReweight(std::string name, TTree* tree, bool debug, const 
   //------------------------------------------//
 
   //------------ 2016 PU SCENARIO ------------//
-  //nPUMax = 50;
-  //double npu_mix_2016_25ns_SpringMC_PUScenarioV1[nPUMax] = {0.000829312873542,0.00124276120498,0.00339329181587,0.00408224735376,0.00383036590008,0.00659159288946,0.00816022734493,0.00943640833116,0.0137777376066,0.017059392038,0.0213193035468,0.0247343174676,0.0280848773878,0.0323308476564,0.0370394341409,0.0456917721191,0.0558762890594,0.0576956187107,0.0625325287017,0.0591603758776,0.0656650815128,0.0678329011676,0.0625142146389,0.0548068448797,0.0503893295063,0.040209818868,0.0374446988111,0.0299661572042,0.0272024759921,0.0219328403791,0.0179586571619,0.0142926728247,0.00839941654725,0.00522366397213,0.00224457976761,0.000779274977993,0.000197066585944,7.16031761328e-05,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08};//0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
-  //npuProbs = npu_mix_2016_25ns_SpringMC_PUScenarioV1;
+  nPUMax = 50;
+  double npu_mix_2016_25ns_SpringMC_PUScenarioV1[nPUMax] = {0.000829312873542,0.00124276120498,0.00339329181587,0.00408224735376,0.00383036590008,0.00659159288946,0.00816022734493,0.00943640833116,0.0137777376066,0.017059392038,0.0213193035468,0.0247343174676,0.0280848773878,0.0323308476564,0.0370394341409,0.0456917721191,0.0558762890594,0.0576956187107,0.0625325287017,0.0591603758776,0.0656650815128,0.0678329011676,0.0625142146389,0.0548068448797,0.0503893295063,0.040209818868,0.0374446988111,0.0299661572042,0.0272024759921,0.0219328403791,0.0179586571619,0.0142926728247,0.00839941654725,0.00522366397213,0.00224457976761,0.000779274977993,0.000197066585944,7.16031761328e-05,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08,1.0e-08};//0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+  npuProbs = npu_mix_2016_25ns_SpringMC_PUScenarioV1;
   //------------------------------------------//
 
   //------------ Moriond17 PU SCENARIO ------------//
@@ -83,9 +83,9 @@ PileupReweight::PileupReweight(std::string name, TTree* tree, bool debug, const 
   //------------------------------------------//
 
   //------------ Moriond18 PU SCENARIO ------------//
-  nPUMax =99;
-  double npu_Moriond18Scenario[nPUMax] = {3.39597497605e-05,6.63688402133e-06,1.39533611284e-05,3.64963078209e-05,6.00872171664e-05,9.33932578027e-05,0.000120591524486,0.000128694546198,0.000361697233219,0.000361796847553,0.000702474896113,0.00133766053707,0.00237817050805,0.00389825605651,0.00594546732588,0.00856825906255,0.0116627396044,0.0148793350787,0.0179897368379,0.0208723871946,0.0232564170641,0.0249826433945,0.0262245860346,0.0272704617569,0.0283301107549,0.0294006137386,0.0303026836965,0.0309692426278,0.0308818046328,0.0310566806228,0.0309692426278,0.0310566806228,0.0310566806228,0.0310566806228,0.0307696426944,0.0300103336052,0.0288355370103,0.0273233309106,0.0264343533951,0.0255453758796,0.0235877272306,0.0215627588047,0.0195825559393,0.0177296309658,0.0160560731931,0.0146022004183,0.0134080690078,0.0129586991411,0.0125093292745,0.0124360740539,0.0123547104433,0.0123953922486,0.0124360740539,0.0124360740539,0.0123547104433,0.0124360740539,0.0123387597772,0.0122414455005,0.011705203844,0.0108187105305,0.00963985508986,0.00827210065136,0.00683770076341,0.00545237697118,0.00420456901556,0.00367513566191,0.00314570230825,0.0022917978982,0.00163221454973,0.00114065309494,0.000784838366118,0.000533204105387,0.000358474034915,0.000238881117601,0.0001984254989,0.000157969880198,0.00010375646169,6.77366175538e-05,4.39850477645e-05,2.84298066026e-05,1.83041729561e-05,1.17473542058e-05,7.51982735129e-06,6.16160108867e-06,4.80337482605e-06,3.06235473369e-06,1.94863396999e-06,1.23726800704e-06,7.83538083774e-07,4.94602064224e-07,3.10989480331e-07,1.94628487765e-07,1.57888581037e-07,1.2114867431e-07,7.49518929908e-08,4.6060444984e-08,2.81008884326e-08,1.70121486128e-08,1.02159894812e-08};
-  npuProbs = npu_Moriond18Scenario;
+  //nPUMax =99;
+  //double npu_Moriond18Scenario[nPUMax] = {3.39597497605e-05,6.63688402133e-06,1.39533611284e-05,3.64963078209e-05,6.00872171664e-05,9.33932578027e-05,0.000120591524486,0.000128694546198,0.000361697233219,0.000361796847553,0.000702474896113,0.00133766053707,0.00237817050805,0.00389825605651,0.00594546732588,0.00856825906255,0.0116627396044,0.0148793350787,0.0179897368379,0.0208723871946,0.0232564170641,0.0249826433945,0.0262245860346,0.0272704617569,0.0283301107549,0.0294006137386,0.0303026836965,0.0309692426278,0.0308818046328,0.0310566806228,0.0309692426278,0.0310566806228,0.0310566806228,0.0310566806228,0.0307696426944,0.0300103336052,0.0288355370103,0.0273233309106,0.0264343533951,0.0255453758796,0.0235877272306,0.0215627588047,0.0195825559393,0.0177296309658,0.0160560731931,0.0146022004183,0.0134080690078,0.0129586991411,0.0125093292745,0.0124360740539,0.0123547104433,0.0123953922486,0.0124360740539,0.0124360740539,0.0123547104433,0.0124360740539,0.0123387597772,0.0122414455005,0.011705203844,0.0108187105305,0.00963985508986,0.00827210065136,0.00683770076341,0.00545237697118,0.00420456901556,0.00367513566191,0.00314570230825,0.0022917978982,0.00163221454973,0.00114065309494,0.000784838366118,0.000533204105387,0.000358474034915,0.000238881117601,0.0001984254989,0.000157969880198,0.00010375646169,6.77366175538e-05,4.39850477645e-05,2.84298066026e-05,1.83041729561e-05,1.17473542058e-05,7.51982735129e-06,6.16160108867e-06,4.80337482605e-06,3.06235473369e-06,1.94863396999e-06,1.23726800704e-06,7.83538083774e-07,4.94602064224e-07,3.10989480331e-07,1.94628487765e-07,1.57888581037e-07,1.2114867431e-07,7.49518929908e-08,4.6060444984e-08,2.81008884326e-08,1.70121486128e-08,1.02159894812e-08};
+  //npuProbs = npu_Moriond18Scenario;
   //------------------------------------------//
 
   // Check that binning of data-profile matches MC scenario
@@ -100,7 +100,7 @@ PileupReweight::PileupReweight(std::string name, TTree* tree, bool debug, const 
   }
   */
 
-  if( nPUMax != static_cast<unsigned int>(MinBiasUphist->GetNbinsX()) ) {
+  /*if( nPUMax != static_cast<unsigned int>(MinBiasUphist->GetNbinsX()) ) {
     std::cerr << "\n\nERROR number of bins (" << MinBiasUphist->GetNbinsX() << ") in MinBiasUpdata PU-profile does not match number of bins (" << nPUMax << ") in MC scenario " << std::endl;
     throw std::exception();
   }
@@ -108,52 +108,52 @@ PileupReweight::PileupReweight(std::string name, TTree* tree, bool debug, const 
   if( nPUMax != static_cast<unsigned int>(MinBiasDownhist->GetNbinsX()) ) {
     std::cerr << "\n\nERROR number of bins (" << MinBiasDownhist->GetNbinsX() << ") in MinBiasDowndata PU-profile does not match number of bins (" << nPUMax << ") in MC scenario " << std::endl;
     throw std::exception();
-  }
+  }*/
 
   std::vector<double> result(nPUMax,0.);
   //std::vector<double> Myresult(nPUMax,0.);
-  std::vector<double> MinBiasUpresult(nPUMax,0.);
-  std::vector<double> MinBiasDownresult(nPUMax,0.);
+  //std::vector<double> MinBiasUpresult(nPUMax,0.);
+  //std::vector<double> MinBiasDownresult(nPUMax,0.);
   double s = 0.;
   //double Mys = 0.;
-  double MinBiasUps = 0.;
-  double MinBiasDowns = 0.;
+  //double MinBiasUps = 0.;
+  //double MinBiasDowns = 0.;
   for(unsigned int npu = 0; npu < nPUMax; ++npu) {
     const double npu_estimated = h->GetBinContent(h->GetXaxis()->FindBin(npu));
     //const double Mynpu_estimated = Myhist->GetBinContent(h->GetXaxis()->FindBin(npu));
-    const double MinBiasUpnpu_estimated = MinBiasUphist->GetBinContent(h->GetXaxis()->FindBin(npu));
-    const double MinBiasDownnpu_estimated = MinBiasDownhist->GetBinContent(h->GetXaxis()->FindBin(npu));
+    //const double MinBiasUpnpu_estimated = MinBiasUphist->GetBinContent(h->GetXaxis()->FindBin(npu));
+    //const double MinBiasDownnpu_estimated = MinBiasDownhist->GetBinContent(h->GetXaxis()->FindBin(npu));
     result[npu] = npu_estimated / npuProbs[npu];
     //Myresult[npu] = Mynpu_estimated / npuProbs[npu];
-    MinBiasUpresult[npu] = MinBiasUpnpu_estimated / npuProbs[npu];
-    MinBiasDownresult[npu] = MinBiasDownnpu_estimated / npuProbs[npu];
+    //MinBiasUpresult[npu] = MinBiasUpnpu_estimated / npuProbs[npu];
+    //MinBiasDownresult[npu] = MinBiasDownnpu_estimated / npuProbs[npu];
     s += npu_estimated;
     //Mys += Mynpu_estimated;
-    MinBiasUps += MinBiasUpnpu_estimated;
-    MinBiasDowns += MinBiasDownnpu_estimated;
+    //MinBiasUps += MinBiasUpnpu_estimated;
+    //MinBiasDowns += MinBiasDownnpu_estimated;
   }
   // normalize weights such that the total sum of weights over thw whole sample is 1.0, i.e., sum_i  result[i] * npu_probs[i] should be 1.0 (!)
   for(unsigned int npu = 0; npu < nPUMax; ++npu) {
     result[npu] /= s;
     //Myresult[npu] /= Mys;
-    MinBiasUpresult[npu] /= MinBiasUps;
-    MinBiasDownresult[npu] /= MinBiasDowns;
+    //MinBiasUpresult[npu] /= MinBiasUps;
+    //MinBiasDownresult[npu] /= MinBiasDowns;
   }
 
   puWeigths_ = result;
- // MypuWeigths_ = Myresult;
-  MinBiasUpWeigths_ = MinBiasUpresult;
-  MinBiasDownWeigths_ = MinBiasDownresult;
+  //MypuWeigths_ = Myresult;
+  //MinBiasUpWeigths_ = MinBiasUpresult;
+  //MinBiasDownWeigths_ = MinBiasDownresult;
   nPUMax_ = puWeigths_.size();
   //MynPUMax_ = MypuWeigths_.size();
-  MinBiasUpnPUMax_ = MinBiasUpWeigths_.size();
-  MinBiasDownnPUMax_ = MinBiasDownWeigths_.size();
+  //MinBiasUpnPUMax_ = MinBiasUpWeigths_.size();
+  //MinBiasDownnPUMax_ = MinBiasDownWeigths_.size();
 
   // Clean up
   delete h;
   //delete Myhist;
-  delete MinBiasUphist;
-  delete MinBiasDownhist;
+  //delete MinBiasUphist;
+  //delete MinBiasDownhist;
 
   SetBranches();
 }
@@ -165,8 +165,8 @@ void PileupReweight::Fill(const edm::Event& iEvent){
   if(debug_) std::cout<<"getting PileupReweight info"<<std::endl;
   double w = 1.;
   //double Myw = 1.;
-  double MinBiasUpw = 1.;
-  double MinBiasDownw = 1.;
+  //double MinBiasUpw = 1.;
+  //double MinBiasDownw = 1.;
   if(!_is_data) {
     Handle<std::vector< PileupSummaryInfo > >  PUInfo;
     iEvent.getByToken(PUInfo_, PUInfo);
@@ -195,7 +195,7 @@ void PileupReweight::Fill(const edm::Event& iEvent){
       Myw = MypuWeigths_.at(nPU);
     }
     */
-    if( nPU >= MinBiasUpnPUMax_ ) {
+    /*if( nPU >= MinBiasUpnPUMax_ ) {
       MinBiasUpw = MinBiasUpWeigths_.back();
     } else {
       MinBiasUpw = MinBiasUpWeigths_.at(nPU);
@@ -204,18 +204,18 @@ void PileupReweight::Fill(const edm::Event& iEvent){
       MinBiasDownw = MinBiasDownWeigths_.back();
     } else {
       MinBiasDownw = MinBiasDownWeigths_.at(nPU);
-    }
+    }*/
   }
   PUWeight=w;
  // MyPUWeight=Myw;
-  MinBiasUpWeight=MinBiasUpw;
-  MinBiasDownWeight=MinBiasDownw;
+  //MinBiasUpWeight=MinBiasUpw;
+  //MinBiasDownWeight=MinBiasDownw;
   if(debug_) std::cout<<"got PileupReweight info"<<std::endl;
 }
 void PileupReweight::SetBranches(){
   if(debug_) std::cout<<"setting branches: calling AddBranch of PileupReweight"<<std::endl;
   AddBranch(&PUWeight,"PUWeight");
   //AddBranch(&MyPUWeight,"MyPUWeight");
-  AddBranch(&MinBiasUpWeight,"MinBiasUpWeight");
-  AddBranch(&MinBiasDownWeight,"MinBiasDownWeight");
+  //AddBranch(&MinBiasUpWeight,"MinBiasUpWeight");
+  //AddBranch(&MinBiasDownWeight,"MinBiasDownWeight");
 }

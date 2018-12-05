@@ -560,7 +560,7 @@ void MuonSelector::SetBranches(){
   AddBranch(&Muon_eta               ,"Muon_eta");
   AddBranch(&Muon_phi               ,"Muon_phi");
   AddBranch(&Muon_energy            ,"Muon_energy");
-  AddBranch(&Muon_px                ,"Muon_px");
+  /*AddBranch(&Muon_px                ,"Muon_px");
   AddBranch(&Muon_py                ,"Muon_py");
   AddBranch(&Muon_pz                ,"Muon_pz");
   AddBranch(&Muon_p                 ,"Muon_p");
@@ -571,7 +571,7 @@ void MuonSelector::SetBranches(){
   AddBranch(&Muon_pt_bt             ,"Muon_pt_bt");
   AddBranch(&Muon_ptErr_bt          ,"Muon_ptErr_bt");
   AddBranch(&Muon_pTErrOVpT_bt      ,"Muon_pTErrOVpT_bt");
-  AddBranch(&Muon_pt_tunePbt        ,"Muon_pt_tunePbt");
+  AddBranch(&Muon_pt_tunePbt        ,"Muon_pt_tunePbt");*/
   //Charge
   AddBranch(&Muon_charge             ,"Muon_charge");
   //ID
@@ -580,28 +580,28 @@ void MuonSelector::SetBranches(){
   AddBranch(&Muon_medium             ,"Muon_medium");
   AddBranch(&Muon_tight              ,"Muon_tight");
   AddBranch(&Muon_isHighPt           ,"Muon_isHighPt");
-  AddBranch(&Muon_POGisGood          ,"Muon_POGisGood");
+  /*AddBranch(&Muon_POGisGood          ,"Muon_POGisGood");
   AddBranch(&Muon_pdgId              ,"Muon_pdgId");
   AddBranch(&Muon_pf                 ,"Muon_pf");
-  AddBranch(&Muon_isGlobal           ,"Muon_isGlobal");
+  AddBranch(&Muon_isGlobal           ,"Muon_isGlobal");*/
   AddBranch(&Muon_isTrackerMuon      ,"Muon_isTrackerMuon");
   AddBranch(&Muon_tunePBestTrackType ,"Muon_tunePBestTrackType");
   //Isolation
-  AddBranch(&Muon_isoR04Charged       ,"Muon_isoR04Charged");
+  /*AddBranch(&Muon_isoR04Charged       ,"Muon_isoR04Charged");
   AddBranch(&Muon_isoR04NeutralHadron ,"Muon_isoR04NeutralHadron");
   AddBranch(&Muon_isoR04Photon        ,"Muon_isoR04Photon");
-  AddBranch(&Muon_isoR04PU            ,"Muon_isoR04PU");
+  AddBranch(&Muon_isoR04PU            ,"Muon_isoR04PU");*/
   AddBranch(&Muon_relIsoDeltaBetaR04  ,"Muon_relIsoDeltaBetaR04");
-  AddBranch(&Muon_isoR04CharParPt     ,"Muon_isoR04CharParPt");
+  /*AddBranch(&Muon_isoR04CharParPt     ,"Muon_isoR04CharParPt");
   AddBranch(&Muon_isoR03Charged       ,"Muon_isoR03Charged");
   AddBranch(&Muon_isoR03NeutralHadron ,"Muon_isoR03NeutralHadron");
   AddBranch(&Muon_isoR03Photon        ,"Muon_isoR03Photon");
   AddBranch(&Muon_isoR03PU            ,"Muon_isoR03PU");
   AddBranch(&Muon_relIsoDeltaBetaR03  ,"Muon_relIsoDeltaBetaR03");
   AddBranch(&Muon_isoR03CharParPt     ,"Muon_isoR03CharParPt");
-  AddBranch(&Muon_trackIso            ,"Muon_trackIso");
+  AddBranch(&Muon_trackIso            ,"Muon_trackIso");*/
   AddBranch(&Muon_TrackerIso          ,"Muon_TrackerIso");
-  AddBranch(&Muon_ecalIso             ,"Muon_ecalIso");
+  /*AddBranch(&Muon_ecalIso             ,"Muon_ecalIso");
   AddBranch(&Muon_hcalIso             ,"Muon_hcalIso");
   AddBranch(&Muon_caloIso             ,"Muon_caloIso");
   AddBranch(&Muon_isoSum              ,"Muon_isoSum");
@@ -618,9 +618,9 @@ void MuonSelector::SetBranches(){
   AddBranch(&Muon_pixelLayersWithMeasurement ,"Muon_pixelLayersWithMeasurement");
   AddBranch(&Muon_qualityhighPurity          ,"Muon_qualityhighPurity");
   AddBranch(&Muon_trkKink                    ,"Muon_trkKink");
-  AddBranch(&Muon_segmentCompatibility       ,"Muon_segmentCompatibility");
+  AddBranch(&Muon_segmentCompatibility       ,"Muon_segmentCompatibility");*/
   //IP
-  AddBranch(&Muon_dxy_pv                 ,"Muon_dxy_pv");
+  /*AddBranch(&Muon_dxy_pv                 ,"Muon_dxy_pv");
   AddBranch(&Muon_dz_pv                  ,"Muon_dz_pv");
   AddBranch(&Muon_dz_bs                  ,"Muon_dz_bs");
   AddBranch(&Muon_dxy_bs                 ,"Muon_dxy_bs");
@@ -628,7 +628,7 @@ void MuonSelector::SetBranches(){
   AddBranch(&Muon_dxyError               ,"Muon_dxyError");
   AddBranch(&Muon_vtx                    ,"Muon_vtx");
   AddBranch(&Muon_vty                    ,"Muon_vty");
-  AddBranch(&Muon_vtz                    ,"Muon_vtz");
+  AddBranch(&Muon_vtz                    ,"Muon_vtz");*/
   if(_AJVar){
     AddBranch(&Muon_track_PCAx_bs          ,"Muon_track_PCAx_bs");
     AddBranch(&Muon_track_PCAy_bs          ,"Muon_track_PCAy_bs");

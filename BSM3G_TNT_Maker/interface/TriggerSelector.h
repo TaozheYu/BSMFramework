@@ -58,7 +58,7 @@ class TriggerSelector : public baseTree{
   double _maxtriggerversion;
   bool _is_data;
   bool _reHLT;
-  int HLT_PFHT650_WideJetMJJ900DEtaJJ1p5;
+  /*int HLT_PFHT650_WideJetMJJ900DEtaJJ1p5;
   int HLT_PFHT650_WideJetMJJ950DEtaJJ1p5;
   int HLT_PFHT800;
   int HLT_PFHT900;
@@ -103,6 +103,36 @@ class TriggerSelector : public baseTree{
   int HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL;
   int HLT_Mu8_DiEle12_CaloIdL_TrackIdL;
   int HLT_DiMu9_Ele9_CaloIdL_TrackIdL_DZ;
-  int HLT_TripleMu_12_10_5;
+  int HLT_TripleMu_12_10_5;*/
+  int HLT_PFHT500_PFMET100_PFMHT100_IDTight;
+  int HLT_PFHT700_PFMET85_PFMHT85_IDTight;
+  int HLT_PFHT800_PFMET75_PFMHT75_IDTight;
+  int HLT_CaloJet500_NoJetID;
+  int HLT_PFHT1050;
+  int HLT_MonoCentralPFJet80_PFMETNoMu120_PFMHTNoMu120_IDTight;
+  int HLT_PFMET120_PFMHT120_IDTight;
+  int HLT_PFMETNoMu120_PFMHTNoMu120_IDTight;
+  int HLT_PFJet500;
+  int HLT_AK8PFJet500;
+  int HLT_Ele27_eta2p1_WPTight_Gsf;
+  int HLT_Ele27_WPTight_Gsf;
+  int HLT_Ele25_eta2p1_WPTight_Gsf;
+  int HLT_Ele115_CaloIdVT_GsfTrkIdT;
+  int HLT_DoubleEle24_22_eta2p1_WPLoose_Gsf;
+  int HLT_DoubleEle33_CaloIdL_MW;
+  int HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_MW;
+  int HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ;
+  int HLT_IsoMu22;
+  int HLT_IsoTkMu22;
+  int HLT_IsoMu24;
+  int HLT_IsoTkMu24;
+  int HLT_IsoMu22_eta2p1;
+  int HLT_IsoTkMu22_eta2p1;
+  int HLT_Mu50;
+  int HLT_TkMu50;
+  int HLT_DoubleMu33NoFiltersNoVtx;
+  int HLT_DoubleMu23NoFiltersNoVtxDisplaced;
+  int HLT_Mu30_TkMu11;
+  int HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ;
 };
 #endif

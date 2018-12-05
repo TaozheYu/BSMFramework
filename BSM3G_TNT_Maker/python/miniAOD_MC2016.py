@@ -20,7 +20,7 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 #####
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
-    '/store/mc/RunIISummer16MiniAODv3/WJetsToLNu_HT-100To200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/02869A97-70EA-E811-9119-EC0D9A0B3380.root'
+    '/store/mc/RunIISummer16MiniAODv2/TTTo2L2Nu_noSC_TuneCUETP8M2T4_13TeV-powheg-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/80000/026FBAB6-EFD1-E611-B8D6-1CC1DE19274E.root'
     ### THQ
     #'file:/eos/cms/store/cmst3/group/tthlep/peruzzi/THQ_4f_Hincl_13TeV_madgraph_pythia8_Fall17/MINIAODSIM_merged/merged_THQ.root',
     #'file:/eos/cms/store/cmst3/group/tthlep/peruzzi/THQ_4f_Hincl_13TeV_madgraph_pythia8_Fall17/MINIAODSIM_merged/merged_THQ008.root',
@@ -132,6 +132,12 @@ na = TauIDEmbedder(process, cms,
         )
 na.runTauID()
 
+####https://twiki.cern.ch/twiki/bin/view/CMS/EgammaPostRecoRecipes#Running_on_2016_MiniAOD_V1
+from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
+setupEgammaPostRecoSeq(process,
+                       runVID=True,
+                       era='2016-Legacy'
+                       )
 
 ############### MET Re-correct ##################
 from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
@@ -234,7 +240,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   bjetnessselfilter = cms.bool(False),
   PuppiVar  = cms.bool(False),
   qglVar    = cms.bool(False),#FF
-  MC2016    = cms.bool(False),
+  MC2016    = cms.bool(True),
   # Input tags 
   bits                = cms.InputTag("TriggerResults","","HLT"),
   prescales           = cms.InputTag("patTrigger"),
@@ -285,14 +291,14 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   #byVTightIsolationMVArun2017v2DBoldDMwLT2017 = cms.string('byVTightIsolationMVArun2017v2DBoldDMwLT2017'),
   #byVVTightIsolationMVArun2017v2DBoldDMwLT2017 = cms.string('byVVTightIsolationMVArun2017v2DBoldDMwLT2017'),
   # JER
-  jerAK4PFchs     =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Spring16_25nsV10_MC_PtResolution_AK4PFchs.txt"),
-  jerAK4PFchsSF   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Spring16_25nsV10_MC_SF_AK4PFchs.txt"),
-  jerAK4PFPuppi   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Spring16_25nsV10_MC_PtResolution_AK4PFPuppi.txt"),
-  jerAK4PFPuppiSF =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Spring16_25nsV10_MC_SF_AK4PFPuppi.txt"),
-  jerAK8PFchs     =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Spring16_25nsV10_MC_PtResolution_AK8PFchs.txt"),
-  jerAK8PFchsSF   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Spring16_25nsV10_MC_SF_AK8PFchs.txt"),
-  jerAK8PFPuppi   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Spring16_25nsV10_MC_PtResolution_AK8PFPuppi.txt"),
-  jerAK8PFPuppiSF =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Spring16_25nsV10_MC_SF_AK8PFPuppi.txt"),
+  jerAK4PFchs     =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Summer16_25nsV1_MC_PtResolution_AK4PFchs.txt"),
+  jerAK4PFchsSF   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Summer16_25nsV1_MC_SF_AK4PFchs.txt"),
+  jerAK4PFPuppi   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Summer16_25nsV1_MC_PtResolution_AK4PFPuppi.txt"),
+  jerAK4PFPuppiSF =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Summer16_25nsV1_MC_SF_AK4PFPuppi.txt"),
+  jerAK8PFchs     =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Summer16_25nsV1_MC_PtResolution_AK8PFchs.txt"),
+  jerAK8PFchsSF   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Summer16_25nsV1_MC_SF_AK8PFchs.txt"),
+  jerAK8PFPuppi   =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Summer16_25nsV1_MC_PtResolution_AK8PFPuppi.txt"),
+  jerAK8PFPuppiSF =  cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JER/Summer16_25nsV1_MC_SF_AK8PFPuppi.txt"),
   # JEC - CORRECTIONS ON FLY
   jecPayloadNamesAK4PFchsMC1   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Summer16_07Aug2017_V11_MC/Summer16_07Aug2017_V11_MC_L1FastJet_AK4PFchs.txt"),
   jecPayloadNamesAK4PFchsMC2   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/MC/Summer16_07Aug2017_V11_MC/Summer16_07Aug2017_V11_MC_L2Relative_AK4PFchs.txt"),
@@ -322,10 +328,10 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   jecPayloadNamesAK8PFchsDATA4   = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Summer16_07Aug2017BCD_V11_DATA/Summer16_07Aug2017BCD_V11_DATA_L2L3Residual_AK8PFchs.txt"),
   jecPayloadNamesAK8PFchsDATAUnc = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Summer16_07Aug2017BCD_V11_DATA/Summer16_07Aug2017BCD_V11_DATA_Uncertainty_AK8PFchs.txt"),
   # PILEUP REWEIGHTING
-  PUReweightfile      = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/PUReweight/PileUpReweighting2017.root"),
+  PUReweightfile      = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/PUReweight/PileUpReweighting2016.root"),
   #MyPUReweightfile      = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/PUReweight/MyPileUpReweighting2017.root"),
-  MinBiasUpReweightfile      = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/PUReweight/PileUpUpReweighting2017.root"),
-  MinBiasDownReweightfile      = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/PUReweight/PileUpDownReweighting2017.root"),
+  #MinBiasUpReweightfile      = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/PUReweight/PileUpUpReweighting2017.root"),
+  #MinBiasDownReweightfile      = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/PUReweight/PileUpDownReweighting2017.root"),
   # PUPPI WEIGHT
   PuppiWeightFilePath = cms.FileInPath("BSMFramework/BSM3G_TNT_Maker/data/PUPPI/puppiCorr.root"),
   # BTAG REWEIGHTING
@@ -395,6 +401,7 @@ process.QGTagger.jetsLabel     = cms.string('QGL_AK4PFchs')
 #####
 process.p = cms.Path(
 process.patJetCorrFactorsUpdatedJEC * process.updatedPatJetsUpdatedJEC *
+process.egammaPostRecoSeq *
 #process.regressionApplication *
 #process.calibratedPatElectrons  *
 #process.egmGsfElectronIDSequence *

@@ -88,9 +88,9 @@ void PVSelector::Fill(const edm::Event& iEvent){
 }
 void PVSelector::SetBranches(){
   if(debug_)    std::cout<<"setting branches: calling AddBranch of baseTree"<<std::endl;
-  AddBranch(&pvertex_notempty  ,"pvertex_notempty");
+  //AddBranch(&pvertex_notempty  ,"pvertex_notempty");
   AddBranch(&nBestVtx          ,"nBestVtx");
-  AddBranch(&npuVertices       ,"npuVertices");
+  /*AddBranch(&npuVertices       ,"npuVertices");
   AddBranch(&trueInteractions  ,"trueInteractions");
   AddBranch(&ootnpuVertices  ,"ootnpuVertices");
   AddBranch(&npuVerticesm1   ,"npuVerticesm1");
@@ -107,7 +107,7 @@ void PVSelector::SetBranches(){
   AddBranch(&beamSpot_y0     ,"beamSpot_y0");
   AddBranch(&beamSpot_z0     ,"beamSpot_z0");
   AddBranch(&beamSpot_xWidth ,"beamSpot_xWidth");
-  AddBranch(&beamSpot_yWidth ,"beamSpot_yWidth");
+  AddBranch(&beamSpot_yWidth ,"beamSpot_yWidth");*/
   if(debug_)    std::cout<<"set branches"<<std::endl;
 }
 void PVSelector::Clear(){

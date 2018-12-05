@@ -142,23 +142,23 @@ void GenParticleSelector::SetBranches(){
   AddBranch(&Gen_pt               ,"Gen_pt");
   AddBranch(&Gen_eta              ,"Gen_eta");
   AddBranch(&Gen_phi              ,"Gen_phi");
-  AddBranch(&Gen_p                ,"Gen_p");
+  //AddBranch(&Gen_p                ,"Gen_p");
   AddBranch(&Gen_energy           ,"Gen_energy");
   //Charge
-  AddBranch(&Gen_charge           ,"Gen_charge");
+  //AddBranch(&Gen_charge           ,"Gen_charge");
   //Vertex
-  AddBranch(&Gen_vx               ,"Gen_vx");
-  AddBranch(&Gen_vy               ,"Gen_vy");
-  AddBranch(&Gen_vz               ,"Gen_vz");
+  //AddBranch(&Gen_vx               ,"Gen_vx");
+  //AddBranch(&Gen_vy               ,"Gen_vy");
+  //AddBranch(&Gen_vz               ,"Gen_vz");
   //Origin
   AddBranch(&Gen_status           ,"Gen_status");
   AddBranch(&Gen_pdg_id           ,"Gen_pdg_id");
   AddBranch(&Gen_motherpdg_id     ,"Gen_motherpdg_id");
-  AddBranch(&Gen_numDaught        ,"Gen_numDaught");
-  AddBranch(&Gen_numMother        ,"Gen_numMother");
-  AddBranch(&Gen_BmotherIndex     ,"Gen_BmotherIndex");
-  AddBranch(&Gen_BmotherIndices   ,"Gen_BmotherIndices");
-  AddBranch(&Gen_BdaughtIndices   ,"Gen_BdaughtIndices");
+  //AddBranch(&Gen_numDaught        ,"Gen_numDaught");
+  //AddBranch(&Gen_numMother        ,"Gen_numMother");
+  //AddBranch(&Gen_BmotherIndex     ,"Gen_BmotherIndex");
+  //AddBranch(&Gen_BmotherIndices   ,"Gen_BmotherIndices");
+  //AddBranch(&Gen_BdaughtIndices   ,"Gen_BdaughtIndices");
   //TTHLep
   if(_tthlepVar){
     AddBranch(&HiggsDecay           ,"HiggsDecay");

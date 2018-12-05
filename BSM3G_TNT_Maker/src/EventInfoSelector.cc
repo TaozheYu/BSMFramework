@@ -200,7 +200,7 @@ void EventInfoSelector::SetBranches(){
   AddBranch(&EVENT_genWeights_,"EVENT_genWeights");
   AddBranch(&EVENT_genHT      ,"EVENT_genHT");
   AddBranch(&EVENT_genPt      ,"EVENT_genPt");
-  AddBranch(&EVENT_rhopog_    ,"EVENT_rhopog");
+  /*AddBranch(&EVENT_rhopog_    ,"EVENT_rhopog");
   AddBranch(&EVENT_rhotth_    ,"EVENT_rhotth");
   AddBranch(&EVENT_Q2tthbbWeightUp_    ,"EVENT_Q2tthbbWeightUp");
   AddBranch(&EVENT_Q2tthbbWeightDown_  ,"EVENT_Q2tthbbWeightDown");
@@ -208,7 +208,7 @@ void EventInfoSelector::SetBranches(){
   AddBranch(&EVENT_PDFtthbbWeightDown_ ,"EVENT_PDFtthbbWeightDown");
   AddBranch(&EVENT_fixedGridRhoFastjetCentral               ,"EVENT_fixedGridRhoFastjetCentral");
   AddBranch(&EVENT_fixedGridRhoFastjetCentralChargedPileUp  ,"EVENT_fixedGridRhoFastjetCentralChargedPileUp");
-  AddBranch(&EVENT_fixedGridRhoFastjetCentralNeutral        ,"EVENT_fixedGridRhoFastjetCentralNeutral");
+  AddBranch(&EVENT_fixedGridRhoFastjetCentralNeutral        ,"EVENT_fixedGridRhoFastjetCentralNeutral");*/
   //Event filters
   AddBranch(&Flag_HBHENoiseFilter                    ,"Flag_HBHENoiseFilter");
   AddBranch(&Flag_HBHENoiseIsoFilter                 ,"Flag_HBHENoiseIsoFilter");

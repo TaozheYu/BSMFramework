@@ -21,6 +21,7 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
     '/store/mc/RunIISummer16MiniAODv2/TTTo2L2Nu_noSC_TuneCUETP8M2T4_13TeV-powheg-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/80000/026FBAB6-EFD1-E611-B8D6-1CC1DE19274E.root'
+    '/store/mc/RunIISummer16MiniAODv3/WJetsToLNu_HT-100To200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v2/120000/FCDD7FFF-A8EA-E811-B17A-001E67D89532.root'
     ### THQ
     #'file:/eos/cms/store/cmst3/group/tthlep/peruzzi/THQ_4f_Hincl_13TeV_madgraph_pythia8_Fall17/MINIAODSIM_merged/merged_THQ.root',
     #'file:/eos/cms/store/cmst3/group/tthlep/peruzzi/THQ_4f_Hincl_13TeV_madgraph_pythia8_Fall17/MINIAODSIM_merged/merged_THQ008.root',

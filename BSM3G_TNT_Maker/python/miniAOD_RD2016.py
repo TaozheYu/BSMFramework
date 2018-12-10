@@ -88,8 +88,6 @@ VarParsing.VarParsing.varType.string,
 
 
 
-
-
 options.register('optionJECAK4PFPuppiDATA1',
 
 'BSMFramework/BSM3G_TNT_Maker/data/JEC/DATA/Summer16_07Aug2017BCD_V11_DATA/Summer16_07Aug2017BCD_V11_DATA_L1FastJet_AK4PFPuppi.txt',
@@ -144,10 +142,6 @@ VarParsing.VarParsing.varType.string,
 "Name for AK4PFPuppiDATAUnc JEC file"
 
 )
-
-
-
-
 
 
 
@@ -253,7 +247,8 @@ process.load('Configuration.StandardSequences.Services_cff')
 process.source = cms.Source("PoolSource",
   fileNames = cms.untracked.vstring(
   #  '/store/data/Run2017B/SingleMuon/MINIAOD/17Nov2017-v1/40000/0021369B-9BD8-E711-BFE9-FA163EAA42CB.root'
-  '/store/data/Run2016C/MET/MINIAOD/07Aug17-v1/10000/42955C70-269C-E711-9A61-14187741013C.root'),
+    '/store/data/Run2016C/MET/MINIAOD/07Aug17-v1/00000/70B6B50C-1AAF-E711-A47F-0CC47A7C345E.root'
+  ),
   skipEvents = cms.untracked.uint32(40000)
 )
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(20000) )
@@ -276,46 +271,46 @@ process.options = cms.untracked.PSet( allowUnscheduled = cms.untracked.bool(True
 #####
 ##   ELECTRON ID SECTION
 #####
-process.load("RecoEgamma/ElectronIdentification/ElectronIDValueMapProducer_cfi")
-from PhysicsTools.SelectorUtils.tools.vid_id_tools import *
-switchOnVIDElectronIdProducer(process,DataFormat.MiniAOD)
-switchOnVIDPhotonIdProducer(process,DataFormat.MiniAOD)
-my_id_modules = [ 'RecoEgamma.ElectronIdentification.Identification.heepElectronID_HEEPV70_cff',
-                  'RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Fall17_94X_V1_cff',
-                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_noIso_V1_cff', 
-                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_iso_V1_cff',
-                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Spring16_HZZ_V1_cff'
-                  ]
-pho_id_modules =[ 'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V1_TrueVtx_cff',
-                  'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',  
-                  ]
-for idmod in my_id_modules:
-    setupAllVIDIdsInModule(process,idmod,setupVIDElectronSelection)
-for idmod in pho_id_modules:
-    setupAllVIDIdsInModule(process,idmod,setupVIDPhotonSelection)
+#process.load("RecoEgamma/ElectronIdentification/ElectronIDValueMapProducer_cfi")
+#from PhysicsTools.SelectorUtils.tools.vid_id_tools import *
+#switchOnVIDElectronIdProducer(process,DataFormat.MiniAOD)
+#switchOnVIDPhotonIdProducer(process,DataFormat.MiniAOD)
+#my_id_modules = [ 'RecoEgamma.ElectronIdentification.Identification.heepElectronID_HEEPV70_cff',
+#                  'RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Fall17_94X_V1_cff',
+#                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_noIso_V1_cff', 
+#                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_iso_V1_cff',
+#                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Spring16_HZZ_V1_cff'
+#                  ]
+#pho_id_modules =[ 'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V1_TrueVtx_cff',
+#                  'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',  
+#                  ]
+#for idmod in my_id_modules:
+#    setupAllVIDIdsInModule(process,idmod,setupVIDElectronSelection)
+#for idmod in pho_id_modules:
+#    setupAllVIDIdsInModule(process,idmod,setupVIDPhotonSelection)
 
 ######
 ### Electron smear and regression
 ######
-process.load('EgammaAnalysis.ElectronTools.calibratedPatElectronsRun2_cfi')
-process.load('EgammaAnalysis.ElectronTools.calibratedPatPhotonsRun2_cfi')
-process.load('Configuration.StandardSequences.Services_cff')
-process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
-                                                   slimmedElectrons  = cms.PSet( initialSeed = cms.untracked.uint32(81),
-                                                                                 engineName = cms.untracked.string('TRandom3'),
-                                                                                 ),
-                                                   slimmedPhotons  = cms.PSet( initialSeed = cms.untracked.uint32(81),
-                                                                               engineName = cms.untracked.string('TRandom3'),
-                                                                               ),
-                                                   )
-process.slimmedElectrons = process.calibratedPatElectrons.clone(electrons=cms.InputTag("slimmedElectrons",processName=cms.InputTag.skipCurrentProcess()))
-process.slimmedPhotons = process.calibratedPatPhotons.clone(photons=cms.InputTag("slimmedPhotons",processName=cms.InputTag.skipCurrentProcess())) 
-process.electronMVAValueMapProducer.srcMiniAOD = cms.InputTag('slimmedElectrons')
-process.photonMVAValueMapProducer.srcMiniAOD = cms.InputTag('slimmedPhotons')
-process.photonIDValueMapProducer.srcMiniAOD = cms.InputTag('slimmedPhotons')
-process.egammaScaleSmearTask = cms.Task(process.slimmedElectrons,process.slimmedPhotons)
-process.egammaScaleSmearSeq = cms.Sequence( process.egammaScaleSmearTask)
-process.egammaScaleSmearAndVIDSeq = cms.Sequence(process.egammaScaleSmearSeq*process.egmGsfElectronIDSequence*process.egmPhotonIDSequence)
+#process.load('EgammaAnalysis.ElectronTools.calibratedPatElectronsRun2_cfi')
+#process.load('EgammaAnalysis.ElectronTools.calibratedPatPhotonsRun2_cfi')
+#process.load('Configuration.StandardSequences.Services_cff')
+#process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
+#                                                   slimmedElectrons  = cms.PSet( initialSeed = cms.untracked.uint32(81),
+#                                                                                 engineName = cms.untracked.string('TRandom3'),
+#                                                                                 ),
+#                                                   slimmedPhotons  = cms.PSet( initialSeed = cms.untracked.uint32(81),
+#                                                                               engineName = cms.untracked.string('TRandom3'),
+#                                                                               ),
+#                                                   )
+#process.slimmedElectrons = process.calibratedPatElectrons.clone(electrons=cms.InputTag("slimmedElectrons",processName=cms.InputTag.skipCurrentProcess()))
+#process.slimmedPhotons = process.calibratedPatPhotons.clone(photons=cms.InputTag("slimmedPhotons",processName=cms.InputTag.skipCurrentProcess())) 
+#process.electronMVAValueMapProducer.srcMiniAOD = cms.InputTag('slimmedElectrons')
+#process.photonMVAValueMapProducer.srcMiniAOD = cms.InputTag('slimmedPhotons')
+#process.photonIDValueMapProducer.srcMiniAOD = cms.InputTag('slimmedPhotons')
+#process.egammaScaleSmearTask = cms.Task(process.slimmedElectrons,process.slimmedPhotons)
+#process.egammaScaleSmearSeq = cms.Sequence( process.egammaScaleSmearTask)
+#process.egammaScaleSmearAndVIDSeq = cms.Sequence(process.egammaScaleSmearSeq*process.egmGsfElectronIDSequence*process.egmPhotonIDSequence)
 
 #####
 ##   For tt+X
@@ -337,6 +332,11 @@ process.genJetFlavourInfos = ak4JetFlavourInfos.clone(jets=genJetCollection,rPar
 process.matchGenBHadron = matchGenBHadron.clone(genParticles = genParticleCollection,jetFlavourInfos = jetFlavourInfos)
 process.matchGenCHadron = matchGenCHadron.clone(genParticles = genParticleCollection,jetFlavourInfos = jetFlavourInfos)
 
+from RecoEgamma.EgammaTools.EgammaPostRecoTools import setupEgammaPostRecoSeq
+setupEgammaPostRecoSeq(process,
+                       runVID=True,
+                       era='2016-Legacy'
+                       )
 
 #####Tau#####
 
@@ -349,23 +349,23 @@ na.runTauID()
 
 
 ############### MET Re-correct ##################
-from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
-from PhysicsTools.PatAlgos.slimming.puppiForMET_cff import makePuppiesFromMiniAOD
-makePuppiesFromMiniAOD( process, True )
+#from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
+#from PhysicsTools.PatAlgos.slimming.puppiForMET_cff import makePuppiesFromMiniAOD
+#makePuppiesFromMiniAOD( process, True )
 #PFMet
-runMetCorAndUncFromMiniAOD(process,
-                           isData=True
-                           )
+#runMetCorAndUncFromMiniAOD(process,
+#                           isData=True
+#                           )
 #Puppi MET
-runMetCorAndUncFromMiniAOD(process,
-                           isData=True,
-                           metType="Puppi",
-                           postfix="Puppi",
-                           jetFlavor="AK4PFPuppi",
-                           )
+#runMetCorAndUncFromMiniAOD(process,
+#                           isData=True,
+#                           metType="Puppi",
+#                           postfix="Puppi",
+#                           jetFlavor="AK4PFPuppi",
+#                           )
 
-process.puppiNoLep.useExistingWeights = False
-process.puppi.useExistingWeights = False
+#process.puppiNoLep.useExistingWeights = False
+#process.puppi.useExistingWeights = False
 
 
 
@@ -454,7 +454,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   bjetnessselfilter = cms.bool(False),
   PuppiVar  = cms.bool(False),
   qglVar    = cms.bool(True),
-  MC2016    = cms.bool(True),
+  MC2016    = cms.bool(False),
   # Input tags 
   bits                = cms.InputTag("TriggerResults","","HLT"),
   prescales           = cms.InputTag("patTrigger"),
@@ -618,13 +618,14 @@ process.QGTagger.jetsLabel     = cms.string('QGL_AK4PFchs')
 #####
 process.p = cms.Path(
 process.patJetCorrFactorsUpdatedJEC * process.updatedPatJetsUpdatedJEC *
+process.egammaPostRecoSeq *
 #process.regressionApplication *
 #process.calibratedPatElectrons  *
 #process.egmGsfElectronIDSequence *
 #process.electronIDValueMapProducer *
 #process.egmPhotonIDSequence *
-process.egammaScaleSmearAndVIDSeq *
-process.fullPatMetSequence *
+#process.egammaScaleSmearAndVIDSeq *
+#process.fullPatMetSequence *
 process.QGTagger *
 process.rerunMvaIsolationSequence *
 process.NewTauIDsEmbedded* # *getattr(process, "NewTauIDsEmbedded")

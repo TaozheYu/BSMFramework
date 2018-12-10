@@ -75,7 +75,7 @@ updateJetCollection(
 #                  ]
 #pho_id_modules =[ 'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V1_TrueVtx_cff',
 #                  'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',  
-                  ]
+#                  ]
 #for idmod in my_id_modules:
 #    setupAllVIDIdsInModule(process,idmod,setupVIDElectronSelection)
 #for idmod in pho_id_modules:

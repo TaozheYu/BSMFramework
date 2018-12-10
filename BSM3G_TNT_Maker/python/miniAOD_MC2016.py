@@ -63,46 +63,46 @@ updateJetCollection(
 #####
 ##   ELECTRON ID SECTION
 #####
-process.load("RecoEgamma/ElectronIdentification/ElectronIDValueMapProducer_cfi")
-from PhysicsTools.SelectorUtils.tools.vid_id_tools import *
-switchOnVIDElectronIdProducer(process,DataFormat.MiniAOD)
-switchOnVIDPhotonIdProducer(process,DataFormat.MiniAOD)
-my_id_modules = [ 'RecoEgamma.ElectronIdentification.Identification.heepElectronID_HEEPV70_cff',
-                  'RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Fall17_94X_V1_cff',
-                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_noIso_V1_cff', 
-                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_iso_V1_cff',
-                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Spring16_HZZ_V1_cff'
+#process.load("RecoEgamma/ElectronIdentification/ElectronIDValueMapProducer_cfi")
+#from PhysicsTools.SelectorUtils.tools.vid_id_tools import *
+#switchOnVIDElectronIdProducer(process,DataFormat.MiniAOD)
+#switchOnVIDPhotonIdProducer(process,DataFormat.MiniAOD)
+#my_id_modules = [ 'RecoEgamma.ElectronIdentification.Identification.heepElectronID_HEEPV70_cff',
+#                  'RecoEgamma.ElectronIdentification.Identification.cutBasedElectronID_Fall17_94X_V1_cff',
+#                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_noIso_V1_cff', 
+#                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Fall17_iso_V1_cff',
+#                  'RecoEgamma.ElectronIdentification.Identification.mvaElectronID_Spring16_HZZ_V1_cff'
+#                  ]
+#pho_id_modules =[ 'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V1_TrueVtx_cff',
+#                  'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',  
                   ]
-pho_id_modules =[ 'RecoEgamma.PhotonIdentification.Identification.cutBasedPhotonID_Fall17_94X_V1_TrueVtx_cff',
-                  'RecoEgamma.PhotonIdentification.Identification.mvaPhotonID_Fall17_94X_V1_cff',  
-                  ]
-for idmod in my_id_modules:
-    setupAllVIDIdsInModule(process,idmod,setupVIDElectronSelection)
-for idmod in pho_id_modules:
-    setupAllVIDIdsInModule(process,idmod,setupVIDPhotonSelection)
+#for idmod in my_id_modules:
+#    setupAllVIDIdsInModule(process,idmod,setupVIDElectronSelection)
+#for idmod in pho_id_modules:
+#    setupAllVIDIdsInModule(process,idmod,setupVIDPhotonSelection)
 
 ######
 ### Electron smear and regression
 ######
-process.load('EgammaAnalysis.ElectronTools.calibratedPatElectronsRun2_cfi')
-process.load('EgammaAnalysis.ElectronTools.calibratedPatPhotonsRun2_cfi')
-process.load('Configuration.StandardSequences.Services_cff')
-process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
-                                                   slimmedElectrons  = cms.PSet( initialSeed = cms.untracked.uint32(81),
-                                                                                 engineName = cms.untracked.string('TRandom3'),
-                                                                                 ),
-                                                   slimmedPhotons  = cms.PSet( initialSeed = cms.untracked.uint32(81),
-                                                                               engineName = cms.untracked.string('TRandom3'),
-                                                                               ),
-                                                   )
-process.slimmedElectrons = process.calibratedPatElectrons.clone(electrons=cms.InputTag("slimmedElectrons",processName=cms.InputTag.skipCurrentProcess()))
-process.slimmedPhotons = process.calibratedPatPhotons.clone(photons=cms.InputTag("slimmedPhotons",processName=cms.InputTag.skipCurrentProcess())) 
-process.electronMVAValueMapProducer.srcMiniAOD = cms.InputTag('slimmedElectrons')
-process.photonMVAValueMapProducer.srcMiniAOD = cms.InputTag('slimmedPhotons')
-process.photonIDValueMapProducer.srcMiniAOD = cms.InputTag('slimmedPhotons')
-process.egammaScaleSmearTask = cms.Task(process.slimmedElectrons,process.slimmedPhotons)
-process.egammaScaleSmearSeq = cms.Sequence( process.egammaScaleSmearTask)
-process.egammaScaleSmearAndVIDSeq = cms.Sequence(process.egmGsfElectronIDSequence*process.egmPhotonIDSequence*process.egammaScaleSmearSeq)
+#process.load('EgammaAnalysis.ElectronTools.calibratedPatElectronsRun2_cfi')
+#process.load('EgammaAnalysis.ElectronTools.calibratedPatPhotonsRun2_cfi')
+#process.load('Configuration.StandardSequences.Services_cff')
+#process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
+#                                                   slimmedElectrons  = cms.PSet( initialSeed = cms.untracked.uint32(81),
+#                                                                                 engineName = cms.untracked.string('TRandom3'),
+#                                                                                 ),
+#                                                   slimmedPhotons  = cms.PSet( initialSeed = cms.untracked.uint32(81),
+#                                                                               engineName = cms.untracked.string('TRandom3'),
+#                                                                               ),
+#                                                   )
+#process.slimmedElectrons = process.calibratedPatElectrons.clone(electrons=cms.InputTag("slimmedElectrons",processName=cms.InputTag.skipCurrentProcess()))
+#process.slimmedPhotons = process.calibratedPatPhotons.clone(photons=cms.InputTag("slimmedPhotons",processName=cms.InputTag.skipCurrentProcess())) 
+#process.electronMVAValueMapProducer.srcMiniAOD = cms.InputTag('slimmedElectrons')
+#process.photonMVAValueMapProducer.srcMiniAOD = cms.InputTag('slimmedPhotons')
+#process.photonIDValueMapProducer.srcMiniAOD = cms.InputTag('slimmedPhotons')
+#process.egammaScaleSmearTask = cms.Task(process.slimmedElectrons,process.slimmedPhotons)
+#process.egammaScaleSmearSeq = cms.Sequence( process.egammaScaleSmearTask)
+#process.egammaScaleSmearAndVIDSeq = cms.Sequence(process.egmGsfElectronIDSequence*process.egmPhotonIDSequence*process.egammaScaleSmearSeq)
 
 #####
 ##   For tt+X
@@ -141,23 +141,23 @@ setupEgammaPostRecoSeq(process,
                        )
 
 ############### MET Re-correct ##################
-from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
-from PhysicsTools.PatAlgos.slimming.puppiForMET_cff import makePuppiesFromMiniAOD
-makePuppiesFromMiniAOD( process, True )
+#from PhysicsTools.PatUtils.tools.runMETCorrectionsAndUncertainties import runMetCorAndUncFromMiniAOD
+#from PhysicsTools.PatAlgos.slimming.puppiForMET_cff import makePuppiesFromMiniAOD
+#makePuppiesFromMiniAOD( process, True )
 #PFMet
-runMetCorAndUncFromMiniAOD(process,
-                           isData=False
-                           )
+#runMetCorAndUncFromMiniAOD(process,
+#                           isData=False
+#                           )
 #Puppi MET
-runMetCorAndUncFromMiniAOD(process,
-                           isData=False,
-                           metType="Puppi",
-                           postfix="Puppi",
-                           jetFlavor="AK4PFPuppi",
-                           )
+#runMetCorAndUncFromMiniAOD(process,
+#                           isData=False,
+#                           metType="Puppi",
+#                           postfix="Puppi",
+#                           jetFlavor="AK4PFPuppi",
+#                           )
 
-process.puppiNoLep.useExistingWeights = False
-process.puppi.useExistingWeights = False
+#process.puppiNoLep.useExistingWeights = False
+#process.puppi.useExistingWeights = False
 
 
 #####
@@ -408,8 +408,8 @@ process.egammaPostRecoSeq *
 #process.egmGsfElectronIDSequence *
 #process.electronIDValueMapProducer *
 #process.egmPhotonIDSequence *
-process.egammaScaleSmearAndVIDSeq *
-process.fullPatMetSequence *
+#process.egammaScaleSmearAndVIDSeq *
+#process.fullPatMetSequence *
 #process.puppiMETSequence *
 #process.fullPatMetSequencePuppi *
 process.QGTagger *

@@ -89,7 +89,7 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
   edm::ESHandle<TransientTrackBuilder> ttrkbuilder;
   iSetup.get<TransientTrackRecord>().get("TransientTrackBuilder",ttrkbuilder);
   iEvent.getByToken(ebRecHitsToken_, _ebRecHits);
-  edm::Handle<edm::ValueMap<bool>  > veto_id_decisions;
+  /*edm::Handle<edm::ValueMap<bool>  > veto_id_decisions;
   edm::Handle<edm::ValueMap<bool>  > loose_id_decisions;
   edm::Handle<edm::ValueMap<bool>  > medium_id_decisions;
   edm::Handle<edm::ValueMap<bool>  > tight_id_decisions;
@@ -124,7 +124,7 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
   iEvent.getByToken(elemvaCategoriesMapToken_Trig_,    elemvaCategories_Trig);
   iEvent.getByToken(eleMVAHZZwpLooseIdMap_,      mvahzzwploose_id_decisions);
   iEvent.getByToken(elemvaValuesMapToken_HZZ_,     elemvaValues_HZZ);
-  iEvent.getByToken(elemvaCategoriesMapToken_HZZ_, elemvaCategories_HZZ);
+  iEvent.getByToken(elemvaCategoriesMapToken_HZZ_, elemvaCategories_HZZ);*/
   /////
   //   Require a good vertex 
   /////
@@ -205,42 +205,42 @@ void ElectronPatSelector::Fill(const edm::Event& iEvent, const edm::EventSetup& 
     patElectron_isGsfScPixChargeConsistent.push_back(el->isGsfScPixChargeConsistent());
     //ID
     const Ptr<pat::Electron> elPtr(electron_pat, el - electron_pat->begin() );
-    bool isPassVeto    = (*veto_id_decisions)  [ elPtr ];
-    bool isPassLoose   = (*loose_id_decisions) [ elPtr ];
-    bool isPassMedium  = (*medium_id_decisions)[ elPtr ];
-    bool isPassTight   = (*tight_id_decisions) [ elPtr ];
-    bool isPassMvatrig        = (*mvatrig_id_decisions) [ elPtr ];
-    bool isPassMvanontrig     = (*mvanontrig_id_decisions) [ elPtr ];
-    bool isPassMvatrigwp90    = (*mvatrigwp90_id_decisions) [ elPtr ];
-    bool isPassMvanontrigwp90 = (*mvanontrigwp90_id_decisions) [ elPtr ];
-    bool isPassMvatrigwpLoose    = (*mvatrigwpLoose_id_decisions) [ elPtr ];
-    bool isPassMvanontrigwpLoose = (*mvanontrigwpLoose_id_decisions) [ elPtr ];
-    bool isPassMvahzzwploose    = (*mvahzzwploose_id_decisions) [ elPtr ];
-    bool isHEEPId      = (*heep_id_decisions)  [ elPtr ];
-    float mvaval_nonTrig  = (*elemvaValues_nonTrig)[ elPtr ];
-    float mvacat_nonTrig  = (*elemvaCategories_nonTrig)[ elPtr ];
-    float mvaval_Trig     = (*elemvaValues_Trig)[ elPtr ];
-    float mvacat_Trig     = (*elemvaCategories_Trig)[ elPtr ];
-    float mvaval_HZZ  = (*elemvaValues_HZZ)[ elPtr ];
-    float mvacat_HZZ  = (*elemvaCategories_HZZ)[ elPtr ];
-    passVetoId_.push_back  ( isPassVeto   );
-    passLooseId_.push_back ( isPassLoose  );
+     bool isPassVeto = el->electronID("cutBasedElectronID-Fall17-94X-V1-veto");
+    bool isPassLoose = el->electronID("cutBasedElectronID-Fall17-94X-V1-loose");
+    bool isPassMedium = el->electronID("cutBasedElectronID-Fall17-94X-V1-medium");
+    bool isPassTight = el->electronID("cutBasedElectronID-Fall17-94X-V1-tight");
+    /*bool isPassMvatrig        = -99;
+    bool isPassMvanontrig     = -99;
+    bool isPassMvatrigwp90    = -99;
+    bool isPassMvanontrigwp90 = -99;
+    bool isPassMvatrigwpLoose    = -99;
+    bool isPassMvanontrigwpLoose = -99;
+    bool isPassMvahzzwploose    = -99;
+    bool isHEEPId      = -99;*/
+    float mvaval_nonTrig  = -99;
+    /*float mvacat_nonTrig  = -99;
+    float mvaval_Trig     = -99;
+    float mvacat_Trig     = -99;
+    float mvaval_HZZ  = -99;
+    float mvacat_HZZ  = -99;*/
+    passVetoId_.push_back ( isPassVeto );
+    passLooseId_.push_back ( isPassLoose );
     passMediumId_.push_back( isPassMedium );
-    passTightId_.push_back ( isPassTight  );
-    passMvatrigId_.push_back( isPassMvatrig );
-    passMvanontrigId_.push_back( isPassMvanontrig );
-    passMvatrigwp90Id_.push_back( isPassMvatrigwp90 );
-    passMvanontrigwp90Id_.push_back( isPassMvanontrigwp90 );
-    passMvatrigwpLooseId_.push_back( isPassMvatrigwpLoose );
-    passMvanontrigwpLooseId_.push_back( isPassMvanontrigwpLoose );
-    passMvaHZZwpLooseId_.push_back( isPassMvahzzwploose );
-    patElectron_mvaValue_HZZ_.push_back(mvaval_HZZ);
-    patElectron_mvaCategory_HZZ_.push_back(mvacat_HZZ);
-    passHEEPId_.push_back  ( isHEEPId     );   
-    patElectron_mvaValue_nonTrig_.push_back(mvaval_nonTrig);
-    patElectron_mvaCategory_nonTrig_.push_back(mvacat_nonTrig);
-    patElectron_mvaValue_Trig_.push_back(mvaval_Trig);
-    patElectron_mvaCategory_Trig_.push_back(mvacat_Trig);
+    passTightId_.push_back ( isPassTight );
+    passMvatrigId_.push_back(-99);
+    passMvanontrigId_.push_back(-99);
+    passMvatrigwp90Id_.push_back(-99);
+    passMvanontrigwp90Id_.push_back(-99);
+    passMvatrigwpLooseId_.push_back(-99);
+    passMvanontrigwpLooseId_.push_back(-99);
+    passMvaHZZwpLooseId_.push_back(-99);
+    patElectron_mvaValue_HZZ_.push_back(-99);
+    patElectron_mvaCategory_HZZ_.push_back(-99);
+    passHEEPId_.push_back (-99); 
+    patElectron_mvaValue_nonTrig_.push_back(-99);
+    patElectron_mvaCategory_nonTrig_.push_back(-99);
+    patElectron_mvaValue_Trig_.push_back(-99);
+    patElectron_mvaCategory_Trig_.push_back(-99);
     patElectron_pdgId.push_back(el->pdgId());
     patElectron_isEcalDriven.push_back(el->ecalDriven());
     //Isolation

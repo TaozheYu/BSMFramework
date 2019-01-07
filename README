@@ -20,6 +20,7 @@ cmsenv
 ## https://twiki.cern.ch/twiki/bin/view/CMS/EgammaMiniAODV2
 git cms-init
 git cms-merge-topic cms-egamma:EgammaID_949 #if you want the FallV2 IDs, otherwise skip
+git cms-merge-topic cms-egamma:EgammaPostRecoTools_940
 scram b -j 8
 
 ## set up MET corrections with EE nosie fix

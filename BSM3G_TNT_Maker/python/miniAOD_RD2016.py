@@ -454,7 +454,7 @@ process.TNT = cms.EDAnalyzer("BSM3G_TNT_Maker",
   bjetnessselfilter = cms.bool(False),
   PuppiVar  = cms.bool(False),
   qglVar    = cms.bool(True),
-  MC2016    = cms.bool(False),
+  MC2016    = cms.bool(True),
   # Input tags 
   bits                = cms.InputTag("TriggerResults","","HLT"),
   prescales           = cms.InputTag("patTrigger"),

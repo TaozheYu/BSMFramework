@@ -19,7 +19,7 @@ cmsenv
 ## set up Egamma Tools 
 ## https://twiki.cern.ch/twiki/bin/view/CMS/EgammaMiniAODV2
 git cms-init
-git cms-merge-topic cms-egamma:EgammaPostRecoTools_940 #just adds in an extra file to have a setup function to make things easier
+git cms-merge-topic cms-egamma:EgammaID_949 #if you want the FallV2 IDs, otherwise skip
 scram b -j 8
 
 ## set up MET corrections with EE nosie fix
@@ -31,7 +31,7 @@ scram b -j 8
 
 
 ## set BSM Framework
-git clone https://github.com/BinghuanLi/BSMFramework.git
+git clone https://github.com/TaozheYu/BSMFramework.git
 cd BSMFramework/
 git checkout CMSSW_9_4_6_patch1
 cd ..
@@ -39,5 +39,5 @@ scram b -j 8
 
 ## To Run ##
 cd BSMFramework/BSM3G_TNT_Maker/python/
-cmsRun miniAOD_MC2017.py  # data: cmsRun miniAOD_RD2017.py
+cmsRun miniAOD_MC2016.py  # data: cmsRun miniAOD_RD2016.py
 

@@ -188,6 +188,7 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
     if(metNames.triggerName(i)=="Flag_BadPFMuonFilter")                   Flag_BadPFMuonFilter                    = metFilterBits->accept(i);
     if(metNames.triggerName(i)=="Flag_BadChargedCandidateFilter")                   Flag_BadChargedCandidateFilter                    = metFilterBits->accept(i);
     if(metNames.triggerName(i)=="Flag_ecalBadCalibFilter")                   Flag_ecalBadCalibFilter                    = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_globalSuperTightHalo2016Filter")     Flag_globalSuperTightHalo2016Filter          = metFilterBits->accept(i);  
   } //loop over met filters
 }
 void EventInfoSelector::SetBranches(){
@@ -230,6 +231,7 @@ void EventInfoSelector::SetBranches(){
   AddBranch(&Flag_trkPOG_logErrorTooManyClusters     ,"Flag_trkPOG_logErrorTooManyClusters");
   AddBranch(&Flag_METFilters                         ,"Flag_METFilters");
   AddBranch(&Flag_globalTightHalo2016Filter                    ,"Flag_globalTightHalo2016Filter");
+  AddBranch(&Flag_globalSuperTightHalo2016Filter                    ,"Flag_globalSuperTightHalo2016Filter");	
   AddBranch(&Flag_BadPFMuonFilter                    ,"Flag_BadPFMuonFilter");
   AddBranch(&Flag_BadChargedCandidateFilter                    ,"Flag_BadChargedCandidateFilter");
   AddBranch(&Flag_ecalBadCalibFilter                    ,"Flag_ecalBadCalibFilter");
@@ -276,4 +278,5 @@ void EventInfoSelector::Initialise(){
   Flag_BadPFMuonFilter                    = -9999;
   Flag_BadChargedCandidateFilter                    = -9999;
   Flag_ecalBadCalibFilter                    = -9999;
+  Flag_globalSuperTightHalo2016Filter                    = -9999;	
 }

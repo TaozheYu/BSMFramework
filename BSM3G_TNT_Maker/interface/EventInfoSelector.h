@@ -152,6 +152,7 @@ class EventInfoSelector : public baseTree{
   int Flag_trkPOG_toomanystripclus53X;
   int Flag_trkPOG_logErrorTooManyClusters;
   int Flag_METFilters;
+  int Flag_globalSuperTightHalo2016Filter;
   int Flag_globalTightHalo2016Filter;
   int Flag_BadPFMuonFilter;
   int Flag_BadChargedCandidateFilter;

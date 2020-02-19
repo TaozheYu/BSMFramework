@@ -62,7 +62,11 @@
 #include "DataFormats/TrackReco/interface/TrackFwd.h"
 #include "DataFormats/TrackReco/interface/TrackExtra.h"
 #include "DataFormats/VertexReco/interface/Vertex.h"
+<<<<<<< HEAD
 //#include "TrackingTools/PatternTools/interface/TwoTrackMinimumDistance.h"
+=======
+#include "TrackingTools/PatternTools/interface/TwoTrackMinimumDistance.h"
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
 #include "RecoVertex/KinematicFitPrimitives/interface/KinematicParticleFactoryFromTransientTrack.h"
 #include "TrackingTools/IPTools/interface/IPTools.h"
 #include "RecoBTag/BTagTools/interface/SignedTransverseImpactParameter.h"
@@ -106,6 +110,12 @@ class ElectronPatSelector : public  baseTree{
   edm::EDGetTokenT<reco::BeamSpot> beamSpot_;
   edm::EDGetTokenT<edm::View<pat::Electron> > electron_pat_;
   edm::EDGetTokenT<pat::PackedCandidateCollection> pfToken_;
+<<<<<<< HEAD
+=======
+  edm::EDGetTokenT<pat::JetCollection> jets_;
+  edm::EDGetTokenT<edm::View<pat::Jet>> jetsToken;
+  edm::EDGetTokenT<edm::ValueMap<float> > qgToken;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   edm::EDGetTokenT<double> rhopogHandle_;
   //edm::EDGetTokenT<double> rhotthHandle_;
   edm::EDGetTokenT<edm::ValueMap<bool>  > electronVetoIdMapToken_;
@@ -135,13 +145,21 @@ class ElectronPatSelector : public  baseTree{
   int    _vtx_ndof_min;
   int    _vtx_rho_max;
   double _vtx_position_z_max;
+<<<<<<< HEAD
   bool   _is_data;
   bool   _reduced;
+=======
+  bool   _AJVar;
+  bool   _tthlepVar;
+  bool   _qglVar;
+  bool   _is_data;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   /////
   //   BSM 
   /////
   //Variables
   //Kinematics
+<<<<<<< HEAD
   vector<double> patElectron_pt, patElectron_eta, patElectron_phi, patElectron_energy, patElectron_energyCorr, patElectron_energySF, patElectron_px, patElectron_py, patElectron_pz, patElectron_p, patElectron_Et, patElectron_SCeta, patElectron_inCrack;
   //Charge
   vector<double> patElectron_charge;
@@ -162,5 +180,73 @@ class ElectronPatSelector : public  baseTree{
   int MatchingToTrigger(const edm::Event& iEvent, edm::Handle<pat::TriggerObjectStandAloneCollection> triggerObjects, edm::Handle<edm::TriggerResults> triggerBits, float eta, float phi);
 
   double get_effarea(double eta);
+=======
+  vector<double> patElectron_pt, patElectron_eta, patElectron_phi, patElectron_energy, patElectron_energyCorr, patElectron_px, patElectron_py, patElectron_pz, patElectron_p, patElectron_Et, patElectron_SCeta, patElectron_inCrack;
+  //Charge
+  vector<double> patElectron_charge, patElectron_isGsfCtfScPixChargeConsistent, patElectron_isGsfScPixChargeConsistent;
+  //ID
+  vector<int>  passVetoId_, passLooseId_, passMediumId_, passTightId_, passHEEPId_, passMvatrigId_, passMvanontrigId_, passMvatrigwp90Id_, passMvanontrigwp90Id_, patElectron_mvaCategory_, patElectron_pdgId, patElectron_isEcalDriven, passMvaHZZwpLooseId_,  passMvatrigwpLooseId_, passMvanontrigwpLooseId_;
+  vector<float> patElectron_mvaValue_nonTrig_, patElectron_mvaCategory_nonTrig_, patElectron_mvaValue_Trig_, patElectron_mvaCategory_Trig_, patElectron_mvaValue_HZZ_, patElectron_mvaCategory_HZZ_;
+  //Isolation
+  vector<double> patElectron_isoChargedHadrons, patElectron_isoNeutralHadrons, patElectron_isoPhotons, patElectron_isoPU, patElectron_relIsoDeltaBeta, patElectron_relIsoRhoEA, patElectron_dr03EcalRecHitSumEt, patElectron_dr03HcalDepth1TowerSumEt, patElectron_isolPtTracks, patElectron_ecalPFClusterIso, patElectron_hcalPFClusterIso;
+  //Shape, Track related variables, other prop
+  vector<double> patElectron_dEtaIn, patElectron_dPhiIn, 
+                 patElectron_full5x5_sigmaIetaIeta, patElectron_full5x5_e2x5Max, patElectron_full5x5_e5x5, patElectron_full5x5_e1x5,
+                 patElectron_hOverE, patElectron_ooEmooP, passConversionVeto_, expectedMissingInnerHits, patElectron_gsfTrack_ndof, patElectron_gsfTrack_normChi2; 
+  //IP
+  vector<double> patElectron_gsfTrack_dz_pv, patElectron_gsfTrack_dxy_pv, patElectron_d0, patElectron_gsfTrack_dz_bs, patElectron_gsfTrack_dxy_bs, patElectron_dzError, patElectron_dxyError, patElectron_gsfTrack_vtx, patElectron_gsfTrack_vty, patElectron_gsfTrack_vtz;
+  vector<double> patElectron_gsfTrack_PCAx_pv, patElectron_gsfTrack_PCAy_pv, patElectron_gsfTrack_PCAz_pv,
+                 patElectron_gsfTrack_PCAx_bs, patElectron_gsfTrack_PCAy_bs, patElectron_gsfTrack_PCAz_bs,  
+                 patElectron_gsfTrackFitErrorMatrix_00, patElectron_gsfTrackFitErrorMatrix_01, patElectron_gsfTrackFitErrorMatrix_02, patElectron_gsfTrackFitErrorMatrix_11, patElectron_gsfTrackFitErrorMatrix_12, patElectron_gsfTrackFitErrorMatrix_22;
+  //patElectron_relIsoDeltaBeta,patElectron_relIsoRhoEA;
+  /////
+  //   TTH
+  /////
+  //Methods
+  int MatchingToTrigger(const edm::Event& iEvent, edm::Handle<pat::TriggerObjectStandAloneCollection> triggerObjects, edm::Handle<edm::TriggerResults> triggerBits, float eta, float phi);
+  void get_eleminiIso_info(const pat::PackedCandidateCollection& pcc,double rho, const pat::Electron& cand, double& miniIso, double& miniIsoCh, double& miniIsoNeu, double& miniIsoPUsub);
+  void get_chneupu_pcc(const pat::PackedCandidateCollection& pcc,vector<const pat::PackedCandidate *>& pfc_all,vector<const pat::PackedCandidate *>& pfc_ch,vector<const pat::PackedCandidate *>& pfc_neu,vector<const pat::PackedCandidate *>&pfc_pu);
+  double get_isosumraw(const std::vector<const pat::PackedCandidate *> & pcc, const pat::Electron& cand, double IsoConeSize, double innerR, double ptTh, SelfVetoPolicyEle::SelfVetoPolicyEle selfVeto, int pdgId);
+  double get_effarea(double eta);
+  void get_elejet_info(edm::View<pat::Electron>::const_iterator& ele, const edm::Event& iEvent, const edm::EventSetup& iSetup, double& elejet_l1corr, double& elejetislep,
+                       double& elejet_mindr, double& elejet_pt, double& eleptOVelejetpt,
+                       double& elejet_pfCombinedInclusiveSecondaryVertexV2BJetTags, double& elejet_pfDeepCSVBTags, double& elejet_pfJetProbabilityBJetTags, double& elejet_pfCombinedMVABJetTags, double& elejet_qgl,                       
+                       double& jx, double& jy, double& jz, double& eleptrel,
+                       int& lepjetidx);
+  int pvassociation(edm::View<pat::Electron>::const_iterator& ele, const pat::PackedCandidateCollection& pcc);
+  double relativeEta(const math::XYZVector& vector, const math::XYZVector& axis);
+  double get_lepWmass(edm::View<pat::Electron>::const_iterator& ele, const edm::Event& iEvent, int& lepjetidx);
+  double get_lepTopmass(edm::View<pat::Electron>::const_iterator& ele, const edm::Event& iEvent, int& lepjetidx);
+  double get_lepWTopmass(edm::View<pat::Electron>::const_iterator& ele, const edm::Event& iEvent, int& lepjetidx);
+  void IP3D2D(TransientTrack ttrk, const reco::Vertex& vtx, GlobalVector gv, double& IP3D_val,double& IP3D_err,double& IP3D_sig, double& sIP3D_val,double& sIP3D_err,double& sIP3D_sig, double& IP2D_val,double& IP2D_err,double& IP2D_sig, double& sIP2D_val,double& sIP2D_err,double& sIP2D_sig);
+  void zIP1D(TransientTrack ttrk, const reco::Vertex& vtx, GlobalVector gv, double& IP1D_val,double& IP1D_err,double& IP1D_sig, double& sIP1D_val,double& sIP1D_err,double& sIP1D_sig);
+  void lepjetIP(const pat::Jet& jet, const reco::Vertex& vtx, GlobalVector lepjetgv, const TransientTrackBuilder& ttrkbuilder,
+                double& lepjetMaxIP3D_val, double& lepjetMaxIP3D_sig, double& lepjetMaxsIP3D_val, double& lepjetMaxsIP3D_sig, double& lepjetMaxIP2D_val, double& lepjetMaxIP2D_sig, double& lepjetMaxsIP2D_val, double& lepjetMaxsIP2D_sig, double& lepjetMaxIP1D_val, double& lepjetMaxIP1D_sig, double& lepjetMaxsIP1D_val, double& lepjetMaxsIP1D_sig,
+                double& lepjetAvIP3D_val, double& lepjetAvIP3D_sig, double& lepjetAvsIP3D_val, double& lepjetAvsIP3D_sig, double& lepjetAvIP2D_val, double& lepjetAvIP2D_sig, double& lepjetAvsIP2D_val, double& lepjetAvsIP2D_sig, double& lepjetAvIP1D_val, double& lepjetAvIP1D_sig, double& lepjetAvsIP1D_val, double& lepjetAvsIP1D_sig,
+                double& denlepjetAvIP3D_val, double& denlepjetAvIP3D_sig, double& denlepjetAvsIP3D_val, double& denlepjetAvsIP3D_sig, double& denlepjetAvIP2D_val, double& denlepjetAvIP2D_sig, double& denlepjetAvsIP2D_val, double& denlepjetAvsIP2D_sig, double& denlepjetAvIP1D_val, double& denlepjetAvIP1D_sig, double& denlepjetAvsIP1D_val, double& denlepjetAvsIP1D_sig,
+                double& Lep_IP3D_val
+               );
+  void lepjetTrks(edm::View<pat::Electron>::const_iterator& ele ,const pat::Jet& jet, const reco::Vertex& vtx, double& lepjetchtrks, double& lepjetpvchtrks, double& lepjetnonpvchtrks, double& lepjetndaus);
+  void lepjetVtxCompatibility(const pat::Jet& jet, const reco::Vertex& vtx, const TransientTrackBuilder& ttrkbuilder, double& lepjetpvchi2, double& lepjetnumno2tr);
+  void get_2trksinfo(vector<TransientTrack> ttrks, double& num2v, double& numno2v);
+  bool is_goodtrk(Track trk,const reco::Vertex& vtx);
+  //Variables
+  vector<double> patElectron_miniIsoRel, patElectron_miniIsoCh, patElectron_miniIsoNeu, patElectron_miniIsoPUsub;
+  vector<double> patElectron_jetdr, patElectron_jetpt, patElectron_jetptratio, patElectron_jetcsv, patElectron_ptrel, patElectron_IP3Dsig, patElectron_eleMVASpring15NonTrig25ns, patElectron_eleMVASpring15NonTrig25ns_VL, patElectron_jetdeepcsv, patElectron_jetptratioV2;
+  vector<double> patElectron_jetl1corr;
+  vector<double> patElectron_jetislep;
+  vector<double> patElectron_pvass, patElectron_etarel, patElectron_ptOVen, patElectron_elejet_pfJetProbabilityBJetTag, patElectron_elejet_pfCombinedMVABJetTags, patElectron_elejet_qgl;
+  vector<double> patElectron_elemass, patElectron_elejet_mass, patElectron_elejet_Wmass, patElectron_elejet_Topmass, patElectron_elejet_WTopmass;
+  vector<double> patElectron_IP3D_val, patElectron_IP3D_err, patElectron_IP3D_sig, patElectron_IP2D_val, patElectron_IP2D_err, patElectron_IP2D_sig, patElectron_sIP3D_val, patElectron_sIP3D_err, patElectron_sIP3D_sig, patElectron_sIP2D_val, patElectron_sIP2D_err, patElectron_sIP2D_sig, patElectron_IP1D_val, patElectron_IP1D_err, patElectron_IP1D_sig, patElectron_sIP1D_val, patElectron_sIP1D_err, patElectron_sIP1D_sig;
+  vector<double> patElectron_lepjetMaxIP3D_val, patElectron_lepjetMaxIP3D_sig, patElectron_lepjetMaxsIP3D_val, patElectron_lepjetMaxsIP3D_sig, patElectron_lepjetMaxIP2D_val, patElectron_lepjetMaxIP2D_sig, patElectron_lepjetMaxsIP2D_val, patElectron_lepjetMaxsIP2D_sig, patElectron_lepjetMaxIP1D_val, patElectron_lepjetMaxIP1D_sig, patElectron_lepjetMaxsIP1D_val, patElectron_lepjetMaxsIP1D_sig, patElectron_lepjetAvIP3D_val, patElectron_lepjetAvIP3D_sig, patElectron_lepjetAvsIP3D_val, patElectron_lepjetAvsIP3D_sig, patElectron_lepjetAvIP2D_val, patElectron_lepjetAvIP2D_sig, patElectron_lepjetAvsIP2D_val, patElectron_lepjetAvsIP2D_sig, patElectron_lepjetAvIP1D_val, patElectron_lepjetAvIP1D_sig, patElectron_lepjetAvsIP1D_val, patElectron_lepjetAvsIP1D_sig;
+  vector<double> patElectron_lepjetchtrks, patElectron_lepjetpvchtrks, patElectron_lepjetnonpvchtrks, patElectron_lepjetndaus;
+  vector<double> patElectron_lepjetpvchi2, patElectron_lepjetnumno2trk;
+  /////
+  //   MC
+  /////
+  vector<double> patElectron_gen_pt, patElectron_gen_eta, patElectron_gen_phi, patElectron_gen_en;
+  vector<int>    patElectron_gen_pdgId, patElectron_gen_isPromptFinalState, patElectron_gen_isDirectPromptTauDecayProductFinalState;
+  vector<int>    patElectron_isMatchedToTrigger;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
 };
 #endif

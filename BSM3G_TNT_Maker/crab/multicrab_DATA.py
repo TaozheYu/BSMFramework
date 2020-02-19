@@ -21,6 +21,7 @@ if __name__ == '__main__':
  ##   Crab configuration
  #####
  datasetnames  = [
+<<<<<<< HEAD
 'May18V1_METB',
 'May18V1_METC',
 'May18V1_METD',
@@ -45,6 +46,32 @@ if __name__ == '__main__':
  #'/SingleMuon/Run2017D-17Nov2017-v1/MINIAOD',
  #'/SingleMuon/Run2017E-17Nov2017-v1/MINIAOD',
  #'/SingleMuon/Run2017F-17Nov2017-v1/MINIAOD',
+=======
+'Fall17V1_SEleBlockB',
+'Fall17V1_SEleBlockC',
+'Fall17V1_SEleBlockD',
+'Fall17V1_SEleBlockE',
+'Fall17V1_SEleBlockF',
+'Fall17V1_SMuBlockB',
+'Fall17V1_SMuBlockC',
+'Fall17V1_SMuBlockD',
+'Fall17V1_SMuBlockE',
+'Fall17V1_SMuBlockF',
+                 ]
+ datasetinputs = [
+ # SingleElectron dataset : AT LEAST 1 high-energy electron in the event.
+ '/SingleElectron/Run2017B-17Nov2017-v1/MINIAOD',
+ '/SingleElectron/Run2017C-17Nov2017-v1/MINIAOD',
+ '/SingleElectron/Run2017D-17Nov2017-v1/MINIAOD',
+ '/SingleElectron/Run2017E-17Nov2017-v1/MINIAOD',
+ '/SingleElectron/Run2017F-17Nov2017-v1/MINIAOD',
+ # SingleMuon dataset : AT LEAST 1 high-energy muon in the event.
+ '/SingleMuon/Run2017B-17Nov2017-v1/MINIAOD',
+ '/SingleMuon/Run2017C-17Nov2017-v1/MINIAOD',
+ '/SingleMuon/Run2017D-17Nov2017-v1/MINIAOD',
+ '/SingleMuon/Run2017E-17Nov2017-v1/MINIAOD',
+ '/SingleMuon/Run2017F-17Nov2017-v1/MINIAOD',
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
                 ]
 
 JECBlockB = [
@@ -140,6 +167,7 @@ JECBlockF = [
 
 
 goodRunsLists = [
+<<<<<<< HEAD
 '/afs/cern.ch/work/t/tayu/private/Tprime/CMSSW_9_4_2/src/BSMFramework/BSM3G_TNT_Maker/data/JSON/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt',
 ]
 
@@ -168,6 +196,34 @@ for d in range(0,len(datasetnames)):
         tempJSON = goodRunsLists[0]
     if 'METF' in datasetnames[d]:
         print 'multicrab.py: Run MET F'
+=======
+'/afs/cern.ch/work/b/binghuan/private/TTHLep2017/CMSSW_9_4_2/src/BSMFramework/BSM3G_TNT_Maker/data/JSON/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt',
+]
+
+#for d in range(0,len(datasetnames)):
+for d in range(3,4):
+    print 'multicrab.py: Running datasetname: ', datasetnames[d]
+    JECFiles = []
+    tempJSON = ''
+    if 'BlockB' in datasetnames[d]:
+        print 'multicrab.py: Run Block B'
+        JECFiles = JECBlockB
+        tempJSON = goodRunsLists[0]
+    if 'BlockC' in datasetnames[d]:
+        print 'multicrab.py: Run Block C'
+        JECFiles = JECBlockC
+        tempJSON = goodRunsLists[0]
+    if 'BlockD' in datasetnames[d]:
+        print 'multicrab.py: Run Block D'
+        JECFiles = JECBlockD
+        tempJSON = goodRunsLists[0]
+    if 'BlockE' in datasetnames[d]:
+        print 'multicrab.py: Run Block E'
+        JECFiles = JECBlockE
+        tempJSON = goodRunsLists[0]
+    if 'BlockF' in datasetnames[d]:
+        print 'multicrab.py: Run Block F'
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
         JECFiles = JECBlockF
         tempJSON = goodRunsLists[0]
 
@@ -208,7 +264,11 @@ for d in range(0,len(datasetnames)):
     config.section_('JobType')
     config.JobType.pluginName  = 'Analysis'
     # List of parameters to pass to CMSSW parameter-set configuration file:
+<<<<<<< HEAD
     config.JobType.psetName    = '/afs/cern.ch/work/t/tayu/private/Tprime/CMSSW_9_4_2/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_RD2017.py'
+=======
+    config.JobType.psetName    = '/afs/cern.ch/work/b/binghuan/private/TTHLep2017/CMSSW_9_4_2/src/BSMFramework/BSM3G_TNT_Maker/python/miniAOD_RD2017.py'
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
     config.JobType.allowUndistributedCMSSW = True
     config.JobType.sendExternalFolder = True
     ofParam = 'ofName=' + datasetnames[d]
@@ -237,8 +297,13 @@ for d in range(0,len(datasetnames)):
     config.Data.unitsPerJob    = 30
     # Golden
     config.Data.lumiMask       = tempJSON
+<<<<<<< HEAD
     config.Data.outLFNDirBase = '/store/user/tayu/'
     print 'multicrab.py: outLFNDirBase = /store/user/tayu/'
+=======
+    config.Data.outLFNDirBase = '/store/user/binghuan/'
+    print 'multicrab.py: outLFNDirBase = /store/user/binghuan/'
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
     #config.Data.publication = True
 
     config.section_('Site')

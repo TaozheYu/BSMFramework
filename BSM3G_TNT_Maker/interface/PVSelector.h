@@ -116,6 +116,11 @@ class PVSelector : public baseTree{
   double _Pvtx_vtx_max; 
   double _Pvtx_vtxdxy_max;
   bool   _is_data;
+<<<<<<< HEAD
+=======
+  bool   _super_TNT;
+  bool   _MiniAODv2;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   /////
   //   BSM 
   /////

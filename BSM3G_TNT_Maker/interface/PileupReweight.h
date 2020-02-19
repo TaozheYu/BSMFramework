@@ -42,10 +42,30 @@ class PileupReweight : public baseTree{
   /////
   edm::EDGetTokenT<std::vector< PileupSummaryInfo> > PUInfo_;
   edm::FileInPath PUReweightfile_;
+<<<<<<< HEAD
   bool _is_data;
   int _year;
   double PUWeight;
   int nPUMax_;
   std::vector<double> puWeigths_;
+=======
+  //edm::FileInPath MyPUReweightfile_;
+  edm::FileInPath MinBiasUpReweightfile_;
+  edm::FileInPath MinBiasDownReweightfile_;
+  bool _is_data;
+  bool _MiniAODv2;
+  double PUWeight;
+  //double MyPUWeight;
+  double MinBiasUpWeight;
+  double MinBiasDownWeight;
+  int nPUMax_;
+  //int MynPUMax_;
+  int MinBiasUpnPUMax_;
+  int MinBiasDownnPUMax_;
+  std::vector<double> puWeigths_;
+  //std::vector<double> MypuWeigths_;
+  std::vector<double> MinBiasUpWeigths_;
+  std::vector<double> MinBiasDownWeigths_;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
 };
 #endif

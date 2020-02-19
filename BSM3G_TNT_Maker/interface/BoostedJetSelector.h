@@ -101,8 +101,12 @@ class BoostedJetSelector : public  baseTree{
   std::string jerAK8PFPuppiSF_;
   edm::FileInPath PuppiWeightFilePath_;
   bool _is_data;
+<<<<<<< HEAD
   int _year;
   bool _reduced;
+=======
+  bool _MC2016;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   /////
   //   JEC
   /////
@@ -114,6 +118,7 @@ class BoostedJetSelector : public  baseTree{
   //   IHEP methods/variables
   /////
   vector <double> BoostedJet_pt, BoostedJet_eta, BoostedJet_phi, BoostedJet_energy, BoostedJet_mass, BoostedJet_Uncorr_pt, BoostedJet_pfJetProbabilityBJetTags, BoostedJet_pfCombinedMVAV2BJetTags, BoostedJet_pfCombinedInclusiveSecondaryVertexV2BJetTags, BoostedJet_pfCombinedCvsLJetTags, BoostedJet_pfCombinedCvsBJetTags;
+<<<<<<< HEAD
   vector <double> BoostedJet_neutralHadEnergyFraction, BoostedJet_neutralEmEnergyFraction, BoostedJet_chargedHadronEnergyFraction;
   vector <double> BoostedJet_chargedEmEnergyFraction, BoostedJet_muonEnergyFraction,BoostedJet_electronEnergy, BoostedJet_photonEnergy;
   vector <int>    BoostedJet_numberOfConstituents, BoostedJet_chargedMultiplicity;
@@ -121,6 +126,17 @@ class BoostedJetSelector : public  baseTree{
   vector <double> BoostedJet_softdrop_mass, BoostedJet_pruned_mass;
 
   vector <double> BoostedJet_puppi_pt, BoostedJet_puppi_softdrop_mass, BoostedJet_puppi_eta, BoostedJet_puppi_phi, BoostedJet_puppi_tau1, BoostedJet_puppi_tau2, BoostedJet_puppi_tau3, BoostedJet_puppi_softdrop_masscorr;
+=======
+  vector <double> BoostedJet_neutralHadEnergyFraction, BoostedJet_neutralEmEmEnergyFraction, BoostedJet_chargedHadronEnergyFraction;
+  vector <double> BoostedJet_chargedEmEnergyFraction, BoostedJet_muonEnergyFraction,BoostedJet_electronEnergy, BoostedJet_photonEnergy;
+  vector <int>    BoostedJet_numberOfConstituents, BoostedJet_chargedMultiplicity;
+  vector <double> BoostedJet_tau1, BoostedJet_tau2, BoostedJet_tau3;
+  vector <double> BoostedJet_softdrop_mass, //BoostedJet_trimmed_mass,
+                                                                       BoostedJet_pruned_mass;//, BoostedJet_filtered_mass;
+
+  vector <double> BoostedJet_puppi_pt, BoostedJet_puppi_mass, BoostedJet_puppi_eta, BoostedJet_puppi_phi, BoostedJet_puppi_tau1, BoostedJet_puppi_tau2, BoostedJet_puppi_tau3, BoostedJet_puppi_softdrop_masscorr;
+  vector <double> TopTagging_topMass, TopTagging_minMass, TopTagging_wMass;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   vector <int>    TopTagging_nSubJets;
   //Jet Energy Corrections and Uncertainties
   vector<double> BoostedJet_JesSF, BoostedJet_JesSFup, BoostedJet_JesSFdown, BoostedJet_JerSF, BoostedJet_JerSFup, BoostedJet_JerSFdown; 

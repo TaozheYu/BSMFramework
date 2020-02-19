@@ -3,7 +3,11 @@ GenParticleSelector::GenParticleSelector(std::string name, TTree* tree, bool deb
   baseTree(name,tree,debug)
 {
   prunedGenToken_ = ic.consumes<edm::View<reco::GenParticle> >(iConfig.getParameter<edm::InputTag>("pruned"));
+<<<<<<< HEAD
   _reduced = iConfig.getParameter<bool>("reduced");
+=======
+  _tthlepVar = iConfig.getParameter<bool>("tthlepVar");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   if(debug) std::cout<<"in GenParticleSelector constructor"<<std::endl;
   if(debug) std::cout<<"in pileup constructor: calling SetBrances()"<<std::endl;
   SetBranches();
@@ -74,6 +78,69 @@ void GenParticleSelector::Fill(const edm::Event& iEvent){
       }
     }
   }
+<<<<<<< HEAD
+=======
+  //Higgs decays
+  if(_tthlepVar){
+    int Hdecay = -1;
+    Hdecay=0;
+    for(size_t i=0; i<pruned->size(); i++){
+      const Candidate * mcParticle = &(*pruned)[i];
+      ////get current candidate
+      int status = mcParticle->status();
+      int pdgId  = mcParticle->pdgId();
+      int absId  = abs(pdgId);
+      int numdgt = mcParticle->numberOfDaughters();
+      //it must be a Higgs and status 62(pythia 8), with at least 2 daughters
+      if(absId!=25 || status!=62) continue;
+      if(!(numdgt>1)) continue;
+      //Get the daughters
+      int ind0 = 0; int ind1 = 1;
+      if(numdgt>2){
+        if(mcParticle->daughter(0)->pdgId()==pdgId){
+          ind0 = 1;
+          ind1 = 2;
+        }
+        if(mcParticle->daughter(1)->pdgId()==pdgId){
+          ind0 = 0;
+          ind1 = 2;
+        }
+      }
+      int d0 = -99; int d1 = -99;
+      d0 = mcParticle->daughter(ind0)->pdgId();
+      d1 = mcParticle->daughter(ind1)->pdgId();
+      d0 = abs(d0);
+      d1 = abs(d1);
+
+      if(d0==5  && d1==5 ) Hdecay = 1; //bb
+      if(d0==24 && d1==24) Hdecay = 2; //WW
+      if(d0==15 && d1==15) Hdecay = 3; //TauTau
+      if(d0==21 && d1==21) Hdecay = 4; //glueglue
+      if(d0==4  && d1==4 ) Hdecay = 5; //cc
+      if(d0==23 && d1==23) Hdecay = 6; //ZZ
+
+      if(d0==22 && d1==23) Hdecay = 7; //Zy
+      if(d0==23 && d1==22) Hdecay = 7; //Zy
+
+      if(d0==22 && d1==22) Hdecay = 8;  //yy
+      if(d0==21 && d1==22) Hdecay = 9;  //gy
+      if(d0==22 && d1==21) Hdecay = 9;  //gy
+      if(d0==3  && d1==3)  Hdecay = 10; //ss
+
+      if(d0==13 && d1==13) Hdecay = 11; //mumu
+
+      if((Hdecay==0) && (d0==22 || d1==22)) Hdecay = 12; //?y
+      if((Hdecay==0) && (d0==21 || d1==21)) Hdecay = 13; //?g
+      if((Hdecay==0) && (d0>100 || d1>100)) Hdecay = 14; //?Hadron
+
+      if(d0==1  && d1==1)  Hdecay = 15; //uu
+      if(d0==2  && d1==2)  Hdecay = 16; //dd
+      if(d0==6  && d1==6)  Hdecay = 17; //tt
+      if(d0==11 && d1==11) Hdecay = 18; //ee
+    }
+    HiggsDecay = Hdecay;
+  }
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   if(debug_) std::cout<<"got gen particle  info"<<std::endl;
 }
 void GenParticleSelector::SetBranches(){
@@ -82,6 +149,7 @@ void GenParticleSelector::SetBranches(){
   AddBranch(&Gen_pt               ,"Gen_pt");
   AddBranch(&Gen_eta              ,"Gen_eta");
   AddBranch(&Gen_phi              ,"Gen_phi");
+<<<<<<< HEAD
   if(!_reduced){
     AddBranch(&Gen_p                ,"Gen_p");
     AddBranch(&Gen_energy           ,"Gen_energy");
@@ -92,16 +160,37 @@ void GenParticleSelector::SetBranches(){
     AddBranch(&Gen_vy               ,"Gen_vy");
     AddBranch(&Gen_vz               ,"Gen_vz");
   }
+=======
+  AddBranch(&Gen_p                ,"Gen_p");
+  AddBranch(&Gen_energy           ,"Gen_energy");
+  //Charge
+  AddBranch(&Gen_charge           ,"Gen_charge");
+  //Vertex
+  AddBranch(&Gen_vx               ,"Gen_vx");
+  AddBranch(&Gen_vy               ,"Gen_vy");
+  AddBranch(&Gen_vz               ,"Gen_vz");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   //Origin
   AddBranch(&Gen_status           ,"Gen_status");
   AddBranch(&Gen_pdg_id           ,"Gen_pdg_id");
   AddBranch(&Gen_motherpdg_id     ,"Gen_motherpdg_id");
+<<<<<<< HEAD
   if(!_reduced){
     AddBranch(&Gen_numDaught        ,"Gen_numDaught");
     AddBranch(&Gen_numMother        ,"Gen_numMother");
     AddBranch(&Gen_BmotherIndex     ,"Gen_BmotherIndex");
     AddBranch(&Gen_BmotherIndices   ,"Gen_BmotherIndices");
     AddBranch(&Gen_BdaughtIndices   ,"Gen_BdaughtIndices");
+=======
+  AddBranch(&Gen_numDaught        ,"Gen_numDaught");
+  AddBranch(&Gen_numMother        ,"Gen_numMother");
+  AddBranch(&Gen_BmotherIndex     ,"Gen_BmotherIndex");
+  AddBranch(&Gen_BmotherIndices   ,"Gen_BmotherIndices");
+  AddBranch(&Gen_BdaughtIndices   ,"Gen_BdaughtIndices");
+  //TTHLep
+  if(_tthlepVar){
+    AddBranch(&HiggsDecay           ,"HiggsDecay");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   }
   if(debug_) std::cout<<"set branches genparticle"<<std::endl;
 }
@@ -127,4 +216,11 @@ void GenParticleSelector::Clear(){
   Gen_BmotherIndex.clear();
   Gen_BmotherIndices.clear();
   Gen_BdaughtIndices.clear();
+<<<<<<< HEAD
+=======
+  //TTHLep
+  if(_tthlepVar){
+    HiggsDecay = -9999;
+  }
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
 }

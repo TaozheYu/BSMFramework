@@ -11,6 +11,11 @@ PVSelector::PVSelector(std::string name, TTree* tree, bool debug, const pset& iC
   _Pvtx_vtx_max    = iConfig.getParameter<double>("Pvtx_vtx_max");
   _Pvtx_vtxdxy_max = iConfig.getParameter<double>("Pvtx_vtxdxy_max");
   _is_data         = iConfig.getParameter<bool>("is_data");
+<<<<<<< HEAD
+=======
+  _super_TNT       = iConfig.getParameter<bool>("super_TNT");
+  _MiniAODv2       = iConfig.getParameter<bool>("MiniAODv2");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   SetBranches();
 }
 PVSelector::~PVSelector(){
@@ -86,9 +91,15 @@ void PVSelector::Fill(const edm::Event& iEvent){
 }
 void PVSelector::SetBranches(){
   if(debug_)    std::cout<<"setting branches: calling AddBranch of baseTree"<<std::endl;
+<<<<<<< HEAD
   //AddBranch(&pvertex_notempty  ,"pvertex_notempty");
   AddBranch(&nBestVtx          ,"nBestVtx");
   /*AddBranch(&npuVertices       ,"npuVertices");
+=======
+  AddBranch(&pvertex_notempty  ,"pvertex_notempty");
+  AddBranch(&nBestVtx          ,"nBestVtx");
+  AddBranch(&npuVertices       ,"npuVertices");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   AddBranch(&trueInteractions  ,"trueInteractions");
   AddBranch(&ootnpuVertices  ,"ootnpuVertices");
   AddBranch(&npuVerticesm1   ,"npuVerticesm1");
@@ -105,7 +116,11 @@ void PVSelector::SetBranches(){
   AddBranch(&beamSpot_y0     ,"beamSpot_y0");
   AddBranch(&beamSpot_z0     ,"beamSpot_z0");
   AddBranch(&beamSpot_xWidth ,"beamSpot_xWidth");
+<<<<<<< HEAD
   AddBranch(&beamSpot_yWidth ,"beamSpot_yWidth");*/
+=======
+  AddBranch(&beamSpot_yWidth ,"beamSpot_yWidth");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   if(debug_)    std::cout<<"set branches"<<std::endl;
 }
 void PVSelector::Clear(){

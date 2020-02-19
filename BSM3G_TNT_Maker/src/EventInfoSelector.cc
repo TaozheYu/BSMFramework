@@ -10,12 +10,16 @@ EventInfoSelector::EventInfoSelector(std::string name, TTree* tree, bool debug, 
   fixedGridRhoFastjetCentralChargedPileUpHandle_  = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralChargedPileUp"));
   fixedGridRhoFastjetCentralNeutralHandle_  = ic.consumes<double>(edm::InputTag("fixedGridRhoFastjetCentralNeutral"));
   metFilterBits_ = ic.consumes<edm::TriggerResults>(iConfig.getParameter<edm::InputTag>("metFilterBits"));
+<<<<<<< HEAD
   ecalBadCalibFilterUpdate_token = ic.consumes< bool >(edm::InputTag("ecalBadCalibReducedMINIAODFilter"));
   prefweight_token = ic.consumes< double >(edm::InputTag("prefiringweight:NonPrefiringProb"));
   prefweightup_token = ic.consumes< double >(edm::InputTag("prefiringweight:NonPrefiringProbUp"));
   prefweightdown_token = ic.consumes< double >(edm::InputTag("prefiringweight:NonPrefiringProbDown"));
   _is_data = iConfig.getParameter<bool>("is_data");
   _year  = iConfig.getParameter<int>("year");
+=======
+  _is_data = iConfig.getParameter<bool>("is_data");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   if(debug) std::cout<<"in EventInfoSelector constructor"<<std::endl;
   SetBranches();
   read_PDFSet = new (LHAPDF::PDFSet)("NNPDF30_nlo_as_0118");
@@ -36,6 +40,7 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
   edm::Handle<LHEEventProduct> lheEventProduct;
   iEvent.getByToken(lheEventProduct_, lheEventProduct);
   if(!_is_data){
+<<<<<<< HEAD
     //PreFiring
     //edm::Handle< double > theprefweight;
     //iEvent.getByToken(prefweight_token, theprefweight ) ;
@@ -47,6 +52,8 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
     //iEvent.getByToken(prefweightdown_token, theprefweightdown ) ;
     //EVENT_prefiringweightdown_ =(*theprefweightdown);
     //Gen Weights
+=======
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
     EVENT_genWeight_ = genEvtInfo->weight();
     const GenEventInfoProduct& genEventInfoW = *(genEvtInfo.product());
     const gen::PdfInfo* pdf = genEventInfoW.pdf();
@@ -138,8 +145,11 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
       }
       if( lCheck && lbarCheck ) V_tlv = l + lbar; // ZtoLL
       if( vlCheck && vlbarCheck ) V_tlv = vl + vlbar; // ZtoNuNu
+<<<<<<< HEAD
       if( lCheck && vlbarCheck ) V_tlv = l + vlbar; // WtoLNu
       if( lbarCheck && vlCheck ) V_tlv = lbar + vl; // WtoLNu
+=======
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
       lheV_pt = V_tlv.Pt(); // why not directly take from id==23 or 24?
     }
     EVENT_genHT = lheHt;
@@ -183,6 +193,7 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
   iEvent.getByToken(metFilterBits_, metFilterBits);
   const edm::TriggerNames &metNames = iEvent.triggerNames(*metFilterBits);
   for(unsigned int i = 0, n = metFilterBits->size(); i < n; ++i){ 
+<<<<<<< HEAD
     if(metNames.triggerName(i)=="Flag_goodVertices")                       Flag_goodVertices                       = metFilterBits->accept(i);
     if(metNames.triggerName(i)=="Flag_globalSuperTightHalo2016Filter")     Flag_globalSuperTightHalo2016Filter     = metFilterBits->accept(i);
     if(metNames.triggerName(i)=="Flag_HBHENoiseFilter")                    Flag_HBHENoiseFilter                    = metFilterBits->accept(i);
@@ -198,6 +209,32 @@ void EventInfoSelector::Fill(const edm::Event& iEvent){
     iEvent.getByToken(ecalBadCalibFilterUpdate_token,passecalBadCalibFilterUpdate);
     Flag_ecalBadCalibReducedMINIAODFilter =  (*passecalBadCalibFilterUpdate );
   }
+=======
+    if(metNames.triggerName(i)=="Flag_HBHENoiseFilter")                    Flag_HBHENoiseFilter                    = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_HBHENoiseIsoFilter")                 Flag_HBHENoiseIsoFilter                 = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_CSCTightHaloFilter")                 Flag_CSCTightHaloFilter                 = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_CSCTightHaloTrkMuUnvetoFilter")      Flag_CSCTightHaloTrkMuUnvetoFilter      = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_CSCTightHalo2015Filter")             Flag_CSCTightHalo2015Filter             = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_HcalStripHaloFilter")                Flag_HcalStripHaloFilter                = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_hcalLaserEventFilter")               Flag_hcalLaserEventFilter               = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_EcalDeadCellTriggerPrimitiveFilter") Flag_EcalDeadCellTriggerPrimitiveFilter = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_EcalDeadCellBoundaryEnergyFilter")   Flag_EcalDeadCellBoundaryEnergyFilter   = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_goodVertices")                       Flag_goodVertices                       = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_eeBadScFilter")                      Flag_eeBadScFilter                      = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_ecalLaserCorrFilter")                Flag_ecalLaserCorrFilter                = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_trkPOGFilters")                      Flag_trkPOGFilters                      = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_chargedHadronTrackResolutionFilter") Flag_chargedHadronTrackResolutionFilter = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_muonBadTrackFilter")                 Flag_muonBadTrackFilter                 = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_trkPOG_manystripclus53X")            Flag_trkPOG_manystripclus53X            = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_trkPOG_toomanystripclus53X")         Flag_trkPOG_toomanystripclus53X         = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_trkPOG_logErrorTooManyClusters")     Flag_trkPOG_logErrorTooManyClusters     = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_METFilters")                         Flag_METFilters                         = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_globalTightHalo2016Filter")                   Flag_globalTightHalo2016Filter                    = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_BadPFMuonFilter")                   Flag_BadPFMuonFilter                    = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_BadChargedCandidateFilter")                   Flag_BadChargedCandidateFilter                    = metFilterBits->accept(i);
+    if(metNames.triggerName(i)=="Flag_ecalBadCalibFilter")                   Flag_ecalBadCalibFilter                    = metFilterBits->accept(i);
+  } //loop over met filters
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
 }
 void EventInfoSelector::SetBranches(){
   if(debug_) std::cout<<"setting branches: calling AddBranch of baseTree"<<std::endl;
@@ -209,6 +246,7 @@ void EventInfoSelector::SetBranches(){
   AddBranch(&EVENT_genWeights_,"EVENT_genWeights");
   AddBranch(&EVENT_genHT      ,"EVENT_genHT");
   AddBranch(&EVENT_genPt      ,"EVENT_genPt");
+<<<<<<< HEAD
   AddBranch(&EVENT_prefiringweight_    ,"EVENT_prefiringweight");
   AddBranch(&EVENT_prefiringweightup_  ,"EVENT_prefiringweightup");
   AddBranch(&EVENT_prefiringweightdown_,"EVENT_prefiringweightdown");
@@ -233,6 +271,41 @@ void EventInfoSelector::SetBranches(){
     AddBranch(&EVENT_fixedGridRhoFastjetCentral               ,"EVENT_fixedGridRhoFastjetCentral");
     AddBranch(&EVENT_fixedGridRhoFastjetCentralChargedPileUp  ,"EVENT_fixedGridRhoFastjetCentralChargedPileUp");
     AddBranch(&EVENT_fixedGridRhoFastjetCentralNeutral        ,"EVENT_fixedGridRhoFastjetCentralNeutral");*/
+=======
+  AddBranch(&EVENT_rhopog_    ,"EVENT_rhopog");
+  AddBranch(&EVENT_rhotth_    ,"EVENT_rhotth");
+  AddBranch(&EVENT_Q2tthbbWeightUp_    ,"EVENT_Q2tthbbWeightUp");
+  AddBranch(&EVENT_Q2tthbbWeightDown_  ,"EVENT_Q2tthbbWeightDown");
+  AddBranch(&EVENT_PDFtthbbWeightUp_   ,"EVENT_PDFtthbbWeightUp");
+  AddBranch(&EVENT_PDFtthbbWeightDown_ ,"EVENT_PDFtthbbWeightDown");
+  AddBranch(&EVENT_fixedGridRhoFastjetCentral               ,"EVENT_fixedGridRhoFastjetCentral");
+  AddBranch(&EVENT_fixedGridRhoFastjetCentralChargedPileUp  ,"EVENT_fixedGridRhoFastjetCentralChargedPileUp");
+  AddBranch(&EVENT_fixedGridRhoFastjetCentralNeutral        ,"EVENT_fixedGridRhoFastjetCentralNeutral");
+  //Event filters
+  AddBranch(&Flag_HBHENoiseFilter                    ,"Flag_HBHENoiseFilter");
+  AddBranch(&Flag_HBHENoiseIsoFilter                 ,"Flag_HBHENoiseIsoFilter");
+  AddBranch(&Flag_CSCTightHaloFilter                 ,"Flag_CSCTightHaloFilter");
+  AddBranch(&Flag_CSCTightHaloTrkMuUnvetoFilter      ,"Flag_CSCTightHaloTrkMuUnvetoFilter");
+  AddBranch(&Flag_CSCTightHalo2015Filter             ,"Flag_CSCTightHalo2015Filter");
+  AddBranch(&Flag_HcalStripHaloFilter                ,"Flag_HcalStripHaloFilter");
+  AddBranch(&Flag_hcalLaserEventFilter               ,"Flag_hcalLaserEventFilter");
+  AddBranch(&Flag_EcalDeadCellTriggerPrimitiveFilter ,"Flag_EcalDeadCellTriggerPrimitiveFilter");
+  AddBranch(&Flag_EcalDeadCellBoundaryEnergyFilter   ,"Flag_EcalDeadCellBoundaryEnergyFilter");
+  AddBranch(&Flag_goodVertices                       ,"Flag_goodVertices");
+  AddBranch(&Flag_eeBadScFilter                      ,"Flag_eeBadScFilter");
+  AddBranch(&Flag_ecalLaserCorrFilter                ,"Flag_ecalLaserCorrFilter");
+  AddBranch(&Flag_trkPOGFilters                      ,"Flag_trkPOGFilters");
+  AddBranch(&Flag_chargedHadronTrackResolutionFilter ,"Flag_chargedHadronTrackResolutionFilter");
+  AddBranch(&Flag_muonBadTrackFilter                 ,"Flag_muonBadTrackFilter");
+  AddBranch(&Flag_trkPOG_manystripclus53X            ,"Flag_trkPOG_manystripclus53X");
+  AddBranch(&Flag_trkPOG_toomanystripclus53X         ,"Flag_trkPOG_toomanystripclus53X");
+  AddBranch(&Flag_trkPOG_logErrorTooManyClusters     ,"Flag_trkPOG_logErrorTooManyClusters");
+  AddBranch(&Flag_METFilters                         ,"Flag_METFilters");
+  AddBranch(&Flag_globalTightHalo2016Filter                    ,"Flag_globalTightHalo2016Filter");
+  AddBranch(&Flag_BadPFMuonFilter                    ,"Flag_BadPFMuonFilter");
+  AddBranch(&Flag_BadChargedCandidateFilter                    ,"Flag_BadChargedCandidateFilter");
+  AddBranch(&Flag_ecalBadCalibFilter                    ,"Flag_ecalBadCalibFilter");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
 }
 void EventInfoSelector::Initialise(){
   //Event quantities
@@ -243,9 +316,12 @@ void EventInfoSelector::Initialise(){
   EVENT_genWeights_.clear();
   EVENT_genHT       = -9999;
   EVENT_genPt       = -9999;
+<<<<<<< HEAD
   EVENT_prefiringweight_     = 1;
   EVENT_prefiringweightup_   = 1;
   EVENT_prefiringweightdown_ = 1;
+=======
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   EVENT_rhopog_     = -9999;
   EVENT_rhotth_     = -9999; 
   EVENT_Q2tthbbWeightUp_    = -9999; 
@@ -256,6 +332,7 @@ void EventInfoSelector::Initialise(){
   EVENT_fixedGridRhoFastjetCentralChargedPileUp = -9999; 
   EVENT_fixedGridRhoFastjetCentralNeutral       = -9999;
   //Event filters
+<<<<<<< HEAD
   Flag_goodVertices                       = -9999;
   Flag_globalSuperTightHalo2016Filter     = -9999;
   Flag_HBHENoiseFilter                    = -9999;
@@ -266,4 +343,29 @@ void EventInfoSelector::Initialise(){
   Flag_eeBadScFilter                      = -9999;
   Flag_ecalBadCalibFilter                 = -9999;
   Flag_ecalBadCalibReducedMINIAODFilter   = -9999;
+=======
+  Flag_HBHENoiseFilter                    = -9999;
+  Flag_HBHENoiseIsoFilter                 = -9999;
+  Flag_CSCTightHaloFilter                 = -9999;
+  Flag_CSCTightHaloTrkMuUnvetoFilter      = -9999;
+  Flag_CSCTightHalo2015Filter             = -9999;
+  Flag_HcalStripHaloFilter                = -9999;
+  Flag_hcalLaserEventFilter               = -9999;
+  Flag_EcalDeadCellTriggerPrimitiveFilter = -9999;
+  Flag_EcalDeadCellBoundaryEnergyFilter   = -9999;
+  Flag_goodVertices                       = -9999;
+  Flag_eeBadScFilter                      = -9999;
+  Flag_ecalLaserCorrFilter                = -9999;
+  Flag_trkPOGFilters                      = -9999;
+  Flag_chargedHadronTrackResolutionFilter = -9999;
+  Flag_muonBadTrackFilter                 = -9999;
+  Flag_trkPOG_manystripclus53X            = -9999;
+  Flag_trkPOG_toomanystripclus53X         = -9999;
+  Flag_trkPOG_logErrorTooManyClusters     = -9999;
+  Flag_METFilters                         = -9999;
+  Flag_globalTightHalo2016Filter                    = -9999;
+  Flag_BadPFMuonFilter                    = -9999;
+  Flag_BadChargedCandidateFilter                    = -9999;
+  Flag_ecalBadCalibFilter                    = -9999;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
 }

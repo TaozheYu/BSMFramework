@@ -82,6 +82,13 @@ class JetSelector : public  baseTree{
   /////
   edm::EDGetTokenT<reco::VertexCollection> vtx_h_;
   edm::EDGetTokenT<pat::JetCollection> jets_;
+<<<<<<< HEAD
+=======
+  edm::EDGetTokenT<edm::ValueMap<float> > qgToken_;
+  edm::EDGetTokenT<edm::ValueMap<float> > axis2Token_;
+  edm::EDGetTokenT<edm::ValueMap<float> > ptDToken_;
+  edm::EDGetTokenT<edm::ValueMap<int> > multToken_;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   edm::EDGetTokenT<pat::JetCollection> puppijets_;
   edm::EDGetTokenT<double> rhopogHandle_;
   edm::EDGetTokenT<double> rhoJERHandle_;
@@ -108,10 +115,17 @@ class JetSelector : public  baseTree{
   std::string jerAK4PFPuppi_;
   std::string jerAK4PFPuppiSF_;
   double _Jet_pt_min;
+<<<<<<< HEAD
   bool _PuppiVar;
   bool _is_data;
   int _year;
   bool _reduced;
+=======
+  bool _super_TNT;
+  bool _PuppiVar;
+  bool _is_data;
+  bool _qglVar;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   /////
   //   JEC
   /////
@@ -130,9 +144,19 @@ class JetSelector : public  baseTree{
   //Kinematics
   vector<double> Jet_pt, Jet_eta, Jet_phi, Jet_energy, Jet_mass, Jet_px, Jet_py, Jet_pz, Jet_Uncorr_pt, Jet_L1corr_pt;
   //ID
+<<<<<<< HEAD
   vector<double> Jet_pfCombinedInclusiveSecondaryVertexV2BJetTags, Jet_pfCombinedMVAV2BJetTags, Jet_pfJetProbabilityBJetTags, Jet_pfCombinedCvsLJetTags, Jet_pfCombinedCvsBJetTags, Jet_pileupId, Jet_isPFJet, Jet_isCaloJet, Jet_pfDeepCSVCvsLJetTags, Jet_pfDeepCSVCvsBJetTags, Jet_pfDeepCSVBJetTags;
   //Energy
   vector<double> Jet_neutralHadEnergyFraction, Jet_neutralEmEnergyFraction, Jet_chargedHadronEnergyFraction, Jet_chargedEmEnergyFraction, Jet_muonEnergyFraction, Jet_electronEnergy, Jet_photonEnergy, Jet_emEnergyFraction, Jet_numberOfConstituents, Jet_chargedMultiplicity;
+=======
+  vector<double> Jet_pfCombinedInclusiveSecondaryVertexV2BJetTags, Jet_pfCombinedMVAV2BJetTags, Jet_pfJetProbabilityBJetTags, Jet_pfCombinedCvsLJetTags, Jet_pfCombinedCvsBJetTags, Jet_pileupId, Jet_isPFJet, Jet_isCaloJet;
+  vector<double> Jet_pfDeepCSVCvsLJetTags, Jet_pfDeepCSVCvsBJetTags, Jet_pfDeepCSVBJetTags;
+  vector<double> Jet_qg, Jet_axis2, Jet_ptD, Jet_mult;  
+  //Energy
+  vector<double> Jet_neutralHadEnergyFraction, Jet_neutralEmEnergyFraction, Jet_chargedHadronEnergyFraction, Jet_chargedEmEnergyFraction, Jet_muonEnergyFraction, Jet_electronEnergy, Jet_photonEnergy, Jet_emEnergyFraction;
+  //Other prop
+  vector<double> Jet_numberOfConstituents, Jet_chargedMultiplicity, Jet_vtxMass, Jet_vtxNtracks, Jet_vtx3DVal, Jet_vtx3DSig;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   //Jet Energy Corrections and Uncertainties
   vector<double> Jet_JesSF, Jet_JesSFup, Jet_JesSFdown, Jet_JerSF, Jet_JerSFup, Jet_JerSFdown; 
   //MC 
@@ -143,7 +167,13 @@ class JetSelector : public  baseTree{
   //ID
   vector<double> Jet_puppi_pfCombinedInclusiveSecondaryVertexV2BJetTags, Jet_puppi_pfCombinedMVAV2BJetTags, Jet_puppi_pfJetProbabilityBJetTags, Jet_puppi_pfCombinedCvsLJetTags, Jet_puppi_pfCombinedCvsBJetTags, Jet_puppi_pileupId, Jet_puppi_isPFJet, Jet_puppi_isCaloJet;
   //Energy
+<<<<<<< HEAD
   vector<double> Jet_puppi_neutralHadEnergyFraction, Jet_puppi_neutralEmEnergyFraction, Jet_puppi_chargedHadronEnergyFraction, Jet_puppi_chargedEmEnergyFraction, Jet_puppi_muonEnergyFraction, Jet_puppi_electronEnergy, Jet_puppi_photonEnergy, Jet_puppi_emEnergyFraction, Jet_puppi_numberOfConstituents, Jet_puppi_chargedMultiplicity;
+=======
+  vector<double> Jet_puppi_neutralHadEnergyFraction, Jet_puppi_neutralEmEnergyFraction, Jet_puppi_chargedHadronEnergyFraction, Jet_puppi_chargedEmEnergyFraction, Jet_puppi_muonEnergyFraction, Jet_puppi_electronEnergy, Jet_puppi_photonEnergy, Jet_puppi_emEnergyFraction;
+  //Other prop
+  vector<double> Jet_puppi_numberOfConstituents, Jet_puppi_chargedMultiplicity, Jet_puppi_vtxMass, Jet_puppi_vtxNtracks, Jet_puppi_vtx3DVal, Jet_puppi_vtx3DSig;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   //Jet Energy Corrections and Uncertainties
   vector<double> Jet_puppi_JesSF, Jet_puppi_JesSFup, Jet_puppi_JesSFdown, Jet_puppi_JerSF, Jet_puppi_JerSFup, Jet_puppi_JerSFdown; 
   //MC 

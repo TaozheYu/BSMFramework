@@ -115,7 +115,11 @@ class GenParticleSelector : public baseTree{
   //   Config variables
   /////
   edm::EDGetTokenT<edm::View<reco::GenParticle> > prunedGenToken_;
+<<<<<<< HEAD
   bool _reduced;
+=======
+  bool _tthlepVar;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   /////
   //   BSM 
   /////
@@ -129,5 +133,12 @@ class GenParticleSelector : public baseTree{
   //Origin
   vector<double> Gen_status, Gen_pdg_id, Gen_motherpdg_id, Gen_numDaught, Gen_numMother;
   vector<int>    Gen_BmotherIndex, Gen_BmotherIndices, Gen_BdaughtIndices;
+<<<<<<< HEAD
+=======
+  /////
+  //   TTHLep
+  /////
+  int HiggsDecay;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
 };
 #endif

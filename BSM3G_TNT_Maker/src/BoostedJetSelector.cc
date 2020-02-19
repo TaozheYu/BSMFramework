@@ -20,8 +20,12 @@ BoostedJetSelector::BoostedJetSelector(std::string name, TTree* tree, bool debug
   jerAK8PFPuppi_   = iConfig.getParameter<edm::FileInPath>("jerAK8PFPuppi").fullPath();
   jerAK8PFPuppiSF_ = iConfig.getParameter<edm::FileInPath>("jerAK8PFPuppiSF").fullPath();
   _is_data = iConfig.getParameter<bool>("is_data");
+<<<<<<< HEAD
   _reduced = iConfig.getParameter<bool>("reduced");
   _year  = iConfig.getParameter<int>("year");
+=======
+  _MC2016   = iConfig.getParameter<bool>("MC2016");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   PuppiWeightFilePath_ = iConfig.getParameter<edm::FileInPath>("PuppiWeightFilePath");
   const char *filePath = PuppiWeightFilePath_.fullPath().c_str();
   PuppiWeightFile = new TFile (filePath,"READ");
@@ -53,7 +57,11 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
   //   Get fatjet information
   /////  
   for(const pat::Jet &j : *fatjets){ 
+<<<<<<< HEAD
     if (j.pt() <= 170.) continue;
+=======
+    if (j.pt() < 170.) continue;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
     //Kinematic
     BoostedJet_pt.push_back(j.pt());         
     BoostedJet_eta.push_back(j.eta());       
@@ -69,7 +77,11 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
     BoostedJet_pfCombinedCvsBJetTags.push_back(j.bDiscriminator("pfCombinedCvsBJetTags"));
     //Energy related variables
     BoostedJet_neutralHadEnergyFraction.push_back(j.neutralHadronEnergyFraction());                               
+<<<<<<< HEAD
     BoostedJet_neutralEmEnergyFraction.push_back(j.neutralEmEnergyFraction());                                   
+=======
+    BoostedJet_neutralEmEmEnergyFraction.push_back(j.neutralEmEnergyFraction());                                   
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
     BoostedJet_chargedHadronEnergyFraction.push_back(j.chargedHadronEnergyFraction());                               
     BoostedJet_chargedEmEnergyFraction.push_back(j.chargedEmEnergyFraction());                              
     BoostedJet_muonEnergyFraction.push_back(j.muonEnergyFraction());                                  
@@ -78,11 +90,29 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
     BoostedJet_electronEnergy.push_back(j.electronEnergy());                               
     BoostedJet_photonEnergy.push_back(j.photonEnergy());
     //Boosted jet prop
+<<<<<<< HEAD
     BoostedJet_tau1.push_back(j.userFloat("ak8PFJetsCHSValueMap:NjettinessAK8CHSTau1"));    //
     BoostedJet_tau2.push_back(j.userFloat("ak8PFJetsCHSValueMap:NjettinessAK8CHSTau2"));    //  Access the n-subjettiness variables
     BoostedJet_tau3.push_back(j.userFloat("ak8PFJetsCHSValueMap:NjettinessAK8CHSTau3"));    // 
     BoostedJet_softdrop_mass.push_back(j.userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCHSSoftDropMass")); // access to soft drop mass
     BoostedJet_pruned_mass.push_back(j.userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCHSPrunedMass"));     // access to pruned mass
+=======
+    if(!_MC2016){
+      BoostedJet_tau1.push_back(j.userFloat("ak8PFJetsCHSValueMap:NjettinessAK8CHSTau1"));    //
+      BoostedJet_tau2.push_back(j.userFloat("ak8PFJetsCHSValueMap:NjettinessAK8CHSTau2"));    //  Access the n-subjettiness variables
+      BoostedJet_tau3.push_back(j.userFloat("ak8PFJetsCHSValueMap:NjettinessAK8CHSTau3"));    // 
+      BoostedJet_softdrop_mass.push_back(j.userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCHSSoftDropMass")); // access to soft drop mass
+      //BoostedJet_trimmed_mass.push_back(j.userFloat("ak8PFJetsCHSTrimmedMass"));   // access to trimmed mass
+      BoostedJet_pruned_mass.push_back(j.userFloat("ak8PFJetsCHSValueMap:ak8PFJetsCHSPrunedMass"));     // access to pruned mass
+      //BoostedJet_filtered_mass.push_back(j.userFloat("ak8PFJetsCHSFilteredMass")); // access to filtered mass
+    } else {
+      BoostedJet_tau1.push_back(j.userFloat("NjettinessAK8:tau1"));    //
+      BoostedJet_tau2.push_back(j.userFloat("NjettinessAK8:tau2"));    //  Access the n-subjettiness variables
+      BoostedJet_tau3.push_back(j.userFloat("NjettinessAK8:tau3"));    // 
+      BoostedJet_softdrop_mass.push_back(j.userFloat("ak8PFJetsCHSSoftDropMass")); // access to soft drop mass
+      BoostedJet_pruned_mass.push_back(j.userFloat("ak8PFJetsCHSPrunedMass"));     // access to pruned mass 
+    }
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
     //Jet Energy Corrections and Uncertainties
     double corrAK8PFchs     = 1;
     double corrUpAK8PFchs   = 1;
@@ -129,6 +159,7 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
     BoostedJet_JerSFup.push_back(JERScaleFactorUP);
     BoostedJet_JerSFdown.push_back(JERScaleFactorDOWN);
     //PUPPI Softdrop
+<<<<<<< HEAD
     BoostedJet_puppi_softdrop_mass.push_back(j.userFloat("ak8PFJetsPuppiSoftDropMass"));
     BoostedJet_puppi_tau1.push_back(j.userFloat("NjettinessAK8Puppi:tau1"));
     BoostedJet_puppi_tau2.push_back(j.userFloat("NjettinessAK8Puppi:tau2"));
@@ -136,6 +167,15 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
     BoostedJet_puppi_pt.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:pt"));
     BoostedJet_puppi_eta.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:eta"));
     BoostedJet_puppi_phi.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:phi"));
+=======
+    BoostedJet_puppi_pt.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:pt"));
+    BoostedJet_puppi_mass.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:mass"));
+    BoostedJet_puppi_eta.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:eta"));
+    BoostedJet_puppi_phi.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:phi"));
+    BoostedJet_puppi_tau1.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:NjettinessAK8PuppiTau1"));
+    BoostedJet_puppi_tau2.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:NjettinessAK8PuppiTau2"));
+    BoostedJet_puppi_tau3.push_back(-99);//j.userFloat("ak8PFJetsPuppiValueMap:NjettinessAK8PuppiTau3"));
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
     TLorentzVector puppi_softdrop, puppi_softdrop_subjet;
     auto const & sdSubjetsPuppi = j.subjets("SoftDropPuppi");
     for ( auto const & it : sdSubjetsPuppi ) {
@@ -144,6 +184,25 @@ void BoostedJetSelector::Fill(const edm::Event& iEvent){
     }
     float puppiCorr = getPUPPIweight( j.correctedJet("Uncorrected").pt()*corrAK8PFchs*JERScaleFactor ,j.eta() );
     BoostedJet_puppi_softdrop_masscorr.push_back(puppi_softdrop.M()*puppiCorr);
+<<<<<<< HEAD
+=======
+    //Variables for top-tagging
+    double TopMass = -10.;
+    double MinMass = -10.;
+    double WMass = -10.;
+    int NSubJets = -10;
+    reco::CATopJetTagInfo const * tagInfo =  dynamic_cast<reco::CATopJetTagInfo const *>( j.tagInfo("caTop"));
+    if( tagInfo != 0 ){
+      TopMass  = tagInfo->properties().topMass;
+      MinMass  = tagInfo->properties().minMass;
+      WMass    = tagInfo->properties().wMass;
+      NSubJets = tagInfo->properties().nSubJets;
+    }
+    TopTagging_topMass.push_back(TopMass);
+    TopTagging_minMass.push_back(MinMass);
+    TopTagging_wMass.push_back(WMass);
+    TopTagging_nSubJets.push_back(NSubJets);
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   } 
 }
 void BoostedJetSelector::JECInitialization(){
@@ -185,6 +244,7 @@ void BoostedJetSelector::SetBranches(){
   AddBranch(&BoostedJet_mass,                        "BoostedJet_mass");
   AddBranch(&BoostedJet_Uncorr_pt ,                  "BoostedJet_Uncorr_pt");
   //ID
+<<<<<<< HEAD
   if(!_reduced){
     AddBranch(&BoostedJet_pfJetProbabilityBJetTags,                     "BoostedJet_pfJetProbabilityBJetTags");
     AddBranch(&BoostedJet_pfCombinedMVAV2BJetTags,                      "BoostedJet_pfCombinedMVAV2BJetTags");
@@ -195,6 +255,16 @@ void BoostedJetSelector::SetBranches(){
   //Energy related variables
   AddBranch(&BoostedJet_neutralHadEnergyFraction,    "BoostedJet_neutralHadEnergyFraction");
   AddBranch(&BoostedJet_neutralEmEnergyFraction,     "BoostedJet_neutralEmEnergyFraction");
+=======
+  AddBranch(&BoostedJet_pfJetProbabilityBJetTags,                     "BoostedJet_pfJetProbabilityBJetTags");
+  AddBranch(&BoostedJet_pfCombinedMVAV2BJetTags,                      "BoostedJet_pfCombinedMVAV2BJetTags");
+  AddBranch(&BoostedJet_pfCombinedInclusiveSecondaryVertexV2BJetTags, "BoostedJet_pfCombinedInclusiveSecondaryVertexV2BJetTags");
+  AddBranch(&BoostedJet_pfCombinedCvsLJetTags                        ,"BoostedJet_pfCombinedCvsLJetTags");
+  AddBranch(&BoostedJet_pfCombinedCvsBJetTags                        ,"BoostedJet_pfCombinedCvsBJetTags");
+  //Energy related variables
+  AddBranch(&BoostedJet_neutralHadEnergyFraction,    "BoostedJet_neutralHadEnergyFraction");
+  AddBranch(&BoostedJet_neutralEmEmEnergyFraction,   "BoostedJet_neutralEmEmEnergyFraction");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   AddBranch(&BoostedJet_chargedHadronEnergyFraction, "BoostedJet_chargedHadronEnergyFraction");
   AddBranch(&BoostedJet_chargedEmEnergyFraction,     "BoostedJet_chargedEmEnergyFraction");
   AddBranch(&BoostedJet_muonEnergyFraction,          "BoostedJet_muonEnergyFraction");
@@ -203,6 +273,7 @@ void BoostedJetSelector::SetBranches(){
   AddBranch(&BoostedJet_electronEnergy,              "BoostedJet_electronEnergy");
   AddBranch(&BoostedJet_photonEnergy,                "BoostedJet_photonEnergy");
   //Boosted jet prop 
+<<<<<<< HEAD
   AddBranch(&BoostedJet_tau1,               "BoostedJet_tau1");
   AddBranch(&BoostedJet_tau2,               "BoostedJet_tau2");
   AddBranch(&BoostedJet_tau3,               "BoostedJet_tau3");
@@ -218,6 +289,23 @@ void BoostedJetSelector::SetBranches(){
     AddBranch(&BoostedJet_puppi_phi, "BoostedJet_puppi_phi");
     AddBranch(&BoostedJet_puppi_softdrop_masscorr,"BoostedJet_puppi_softdrop_masscorr");
   }
+=======
+  AddBranch(&BoostedJet_tau1,           "BoostedJet_tau1");
+  AddBranch(&BoostedJet_tau2,           "BoostedJet_tau2");
+  AddBranch(&BoostedJet_tau3,           "BoostedJet_tau3");
+  AddBranch(&BoostedJet_softdrop_mass,  "BoostedJet_softdrop_mass");
+  //AddBranch(&BoostedJet_trimmed_mass,   "BoostedJet_trimmed_mass");
+  AddBranch(&BoostedJet_pruned_mass,    "BoostedJet_pruned_mass");
+  //AddBranch(&BoostedJet_filtered_mass,  "BoostedJet_filtered_mass");
+  AddBranch(&BoostedJet_puppi_pt,"BoostedJet_puppi_pt");
+  AddBranch(&BoostedJet_puppi_mass,"BoostedJet_puppi_mass");
+  AddBranch(&BoostedJet_puppi_eta,"BoostedJet_puppi_eta");
+  AddBranch(&BoostedJet_puppi_phi,"BoostedJet_puppi_phi");
+  AddBranch(&BoostedJet_puppi_tau1,"BoostedJet_puppi_tau1");
+  AddBranch(&BoostedJet_puppi_tau2,"BoostedJet_puppi_tau2");
+  AddBranch(&BoostedJet_puppi_tau3,"BoostedJet_puppi_tau3");
+  AddBranch(&BoostedJet_puppi_softdrop_masscorr,"BoostedJet_puppi_softdrop_masscorr");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   //Jet Energy Corrections and Uncertainties
   AddBranch(&BoostedJet_JesSF                ,"BoostedJet_JesSF");
   AddBranch(&BoostedJet_JesSFup              ,"BoostedJet_JesSFup");
@@ -225,6 +313,14 @@ void BoostedJetSelector::SetBranches(){
   AddBranch(&BoostedJet_JerSF                ,"BoostedJet_JerSF");
   AddBranch(&BoostedJet_JerSFup              ,"BoostedJet_JerSFup");
   AddBranch(&BoostedJet_JerSFdown            ,"BoostedJet_JerSFdown");
+<<<<<<< HEAD
+=======
+  //Variables for top-tagging
+  AddBranch(&TopTagging_topMass,  "TopTagging_topMass");
+  AddBranch(&TopTagging_minMass,  "TopTagging_minMass");
+  AddBranch(&TopTagging_wMass,    "TopTagging_wMass");
+  AddBranch(&TopTagging_nSubJets, "TopTagging_nSubJets");
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   if(debug_)    std::cout<<"set branches"<<std::endl;
 }
 void BoostedJetSelector::Clear(){
@@ -243,7 +339,11 @@ void BoostedJetSelector::Clear(){
   BoostedJet_pfCombinedCvsBJetTags.clear();
   //Energy related variables
   BoostedJet_neutralHadEnergyFraction.clear();
+<<<<<<< HEAD
   BoostedJet_neutralEmEnergyFraction.clear();
+=======
+  BoostedJet_neutralEmEmEnergyFraction.clear();
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   BoostedJet_chargedHadronEnergyFraction.clear();
   BoostedJet_chargedEmEnergyFraction.clear();
   BoostedJet_muonEnergyFraction.clear();
@@ -256,9 +356,17 @@ void BoostedJetSelector::Clear(){
   BoostedJet_tau2.clear();
   BoostedJet_tau3.clear();
   BoostedJet_softdrop_mass.clear();
+<<<<<<< HEAD
   BoostedJet_pruned_mass.clear();
   BoostedJet_puppi_pt.clear();
   BoostedJet_puppi_softdrop_mass.clear();
+=======
+  //BoostedJet_trimmed_mass.clear();
+  BoostedJet_pruned_mass.clear();
+  //BoostedJet_filtered_mass.clear();
+  BoostedJet_puppi_pt.clear();
+  BoostedJet_puppi_mass.clear();
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   BoostedJet_puppi_eta.clear();
   BoostedJet_puppi_phi.clear();
   BoostedJet_puppi_tau1.clear();
@@ -272,6 +380,7 @@ void BoostedJetSelector::Clear(){
   BoostedJet_JerSF.clear();
   BoostedJet_JerSFup.clear();
   BoostedJet_JerSFdown.clear();
+<<<<<<< HEAD
 }
 void BoostedJetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK8PFchs, float &JERScaleFactor, float &JERScaleFactorUP, float &JERScaleFactorDOWN){
   if(!jet.genJet()) return;
@@ -279,10 +388,22 @@ void BoostedJetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK
   double genJetPt  = jet.genJet()->pt();
   double jetEta=fabs(jet.eta());
   double jetEta2018=jet.eta();
+=======
+  //Variables for top-tagging
+  TopTagging_topMass.clear();
+  TopTagging_minMass.clear();
+  TopTagging_wMass.clear();
+  TopTagging_nSubJets.clear();
+}
+void BoostedJetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK8PFchs, float &JERScaleFactor, float &JERScaleFactorUP, float &JERScaleFactorDOWN){
+  if(!jet.genJet()) return;
+  double jetEta=fabs(jet.eta());
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   double cFactorJER = 1.0; 
   double cFactorJERdown = 1.0;
   double cFactorJERup = 1.0;
   //https://twiki.cern.ch/twiki/bin/view/CMS/JetResolution#JER_Scaling_factors_and_Unce_AN1
+<<<<<<< HEAD
   if(_year==2017){
     if( jetEta<0.522 ){ 
       cFactorJER = 1.1432; 
@@ -701,6 +822,63 @@ void BoostedJetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK
       cFactorJERup   = 1.1922+0.1488;
     }
   }
+=======
+  if( jetEta<0.5 ){ 
+    cFactorJER = 1.109; 
+    cFactorJERdown = 1.109-0.008;
+    cFactorJERup   = 1.109+0.008; 
+  } else if( jetEta<0.8 ){ 
+    cFactorJER = 1.138; 
+    cFactorJERdown = 1.138-0.013;
+    cFactorJERup   = 1.138+0.013; 
+  } else if( jetEta<1.1 ){ 
+    cFactorJER = 1.114; 
+    cFactorJERdown = 1.114-0.013;
+    cFactorJERup   = 1.114+0.013; 
+  } else if( jetEta<1.3 ){ 
+    cFactorJER = 1.123; 
+    cFactorJERdown = 1.123-0.024;
+    cFactorJERup   = 1.123+0.024; 
+  } else if( jetEta<1.7 ){ 
+    cFactorJER = 1.084; 
+    cFactorJERdown = 1.084-0.011;
+    cFactorJERup   = 1.084+0.011; 
+  } else if( jetEta<1.9 ){ 
+    cFactorJER = 1.082; 
+    cFactorJERdown = 1.082-0.035;
+    cFactorJERup   = 1.082+0.035; 
+  } else if( jetEta<2.1 ){ 
+    cFactorJER = 1.140; 
+    cFactorJERdown = 1.140-0.047;
+    cFactorJERup   = 1.140+0.047; 
+  } else if( jetEta<2.3 ){ 
+    cFactorJER = 1.067; 
+    cFactorJERdown = 1.067-0.053;
+    cFactorJERup   = 1.067+0.053; 
+  } else if( jetEta<2.5 ){ 
+    cFactorJER = 1.177; 
+    cFactorJERdown = 1.177-0.041;
+    cFactorJERup   = 1.177+0.041; 
+  } else if( jetEta<2.8 ){ 
+    cFactorJER = 1.364; 
+    cFactorJERdown = 1.364-0.039;
+    cFactorJERup   = 1.364+0.039; 
+  } else if( jetEta<3.0 ){ 
+    cFactorJER = 1.857; 
+    cFactorJERdown = 1.857-0.071;
+    cFactorJERup   = 1.857+0.071; 
+  } else if( jetEta<3.2 ){ 
+    cFactorJER = 1.328; 
+    cFactorJERdown = 1.328-0.022;
+    cFactorJERup   = 1.328+0.022; 
+  } else if( jetEta<5.0 ){ 
+    cFactorJER = 1.160; 
+    cFactorJERdown = 1.160-0.029;
+    cFactorJERup   = 1.160+0.029;
+  }
+  double recoJetPt = (jet.correctedJet("Uncorrected").pt())*JesSF;
+  double genJetPt  = jet.genJet()->pt();
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   double diffPt    = recoJetPt - genJetPt;
   JME::JetResolution resolution;
   JME::JetResolutionScaleFactor res_sf;
@@ -716,7 +894,12 @@ void BoostedJetSelector::GetJER(pat::Jet jet, float JesSF, float rhoJER, bool AK
   parameters.setJetEta(jet.eta());
   parameters.setRho(rhoJER);
   float relpterr = resolution.getResolution(parameters);
+<<<<<<< HEAD
   if(genJetPt>0. && deltaR(jet.eta(),jet.phi(),jet.genJet()->eta(),jet.genJet()->phi())<0.2 && (abs(diffPt)<3*relpterr*recoJetPt)){
+=======
+  if(genJetPt>0. && deltaR(jet.eta(),jet.phi(),jet.genJet()->eta(),jet.genJet()->phi())<0.2
+     && (abs(jet.pt()-jet.genJet()->pt())<3*relpterr*jet.pt())) {
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
     JERScaleFactor     = (std::max(0., genJetPt + cFactorJER*diffPt))/recoJetPt;
     JERScaleFactorUP   = (std::max(0., genJetPt + cFactorJERup*diffPt))/recoJetPt;
     JERScaleFactorDOWN = (std::max(0., genJetPt + cFactorJERdown*diffPt))/recoJetPt;

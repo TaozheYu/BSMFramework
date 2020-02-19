@@ -107,9 +107,16 @@ class METSelector : public baseTree{
   //   Config variables
   /////
   edm::EDGetTokenT<pat::METCollection> mets_;
+<<<<<<< HEAD
   edm::EDGetTokenT<pat::METCollection> metsNoHF_;
   edm::EDGetTokenT<pat::METCollection> puppimets_;
   bool _is_data;
+=======
+  edm::EDGetTokenT<pat::METCollection> puppimets_;
+  bool _is_data;
+  bool _super_TNT; 
+  bool _MiniAODv2;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   bool _PuppiVar;
   /////
   //   BSM 
@@ -118,11 +125,21 @@ class METSelector : public baseTree{
   ////slimmedMETs
   //Kinematic
   double Met_type1PF_pt, Met_type1PF_px, Met_type1PF_py, Met_type1PF_pz, Met_type1PF_phi, Met_type1PF_sumEt;
+<<<<<<< HEAD
   double MetNoHF_type1PF_pt, MetNoHF_type1PF_px, MetNoHF_type1PF_py, MetNoHF_type1PF_pz, MetNoHF_type1PF_phi, MetNoHF_type1PF_sumEt;
+=======
+  //Corrections/Systematics
+  double Met_type1PF_shiftedPtUp, Met_type1PF_shiftedPtDown;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   //MC
   double Gen_type1PF_Met;
   ////slimmedMETsPUPPI
   double Met_puppi_pt, Met_puppi_px, Met_puppi_py, Met_puppi_pz, Met_puppi_phi, Met_puppi_sumEt;
+<<<<<<< HEAD
+=======
+  //Corrections/Systematics
+  double Met_puppi_shiftedPtUp, Met_puppi_shiftedPtDown;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   //MC
   double Gen_puppi_Met;
 };

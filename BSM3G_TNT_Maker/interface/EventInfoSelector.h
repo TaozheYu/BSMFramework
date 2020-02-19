@@ -120,23 +120,30 @@ class EventInfoSelector : public baseTree{
   edm::EDGetTokenT<double> fixedGridRhoFastjetCentralChargedPileUpHandle_;
   edm::EDGetTokenT<double> fixedGridRhoFastjetCentralNeutralHandle_;
   edm::EDGetTokenT<edm::TriggerResults> metFilterBits_;
+<<<<<<< HEAD
   edm::EDGetTokenT< bool >ecalBadCalibFilterUpdate_token;
   edm::EDGetTokenT< double > prefweight_token;
   edm::EDGetTokenT< double > prefweightup_token;
   edm::EDGetTokenT< double > prefweightdown_token;
+=======
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   void Initialise();
   //Event quantities
   int EVENT_event_, EVENT_run_, EVENT_lumiBlock_;
   double EVENT_genWeight_, EVENT_genHT, EVENT_genPt;
   bool _is_data; 
+<<<<<<< HEAD
   int _year;
   double EVENT_prefiringweight_, EVENT_prefiringweightup_, EVENT_prefiringweightdown_;
+=======
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   double EVENT_rhopog_, EVENT_rhotth_; 
   double EVENT_originalXWGTUP_, EVENT_scalePDF_;
   double EVENT_PDFtthbbWeightUp_, EVENT_PDFtthbbWeightDown_, EVENT_Q2tthbbWeightUp_, EVENT_Q2tthbbWeightDown_;
   vector<double> EVENT_genWeights_;
   double EVENT_fixedGridRhoFastjetCentral, EVENT_fixedGridRhoFastjetCentralChargedPileUp, EVENT_fixedGridRhoFastjetCentralNeutral;
   //Event filters
+<<<<<<< HEAD
   int Flag_goodVertices;
   int Flag_globalSuperTightHalo2016Filter;
   int Flag_HBHENoiseFilter;
@@ -147,6 +154,31 @@ class EventInfoSelector : public baseTree{
   int Flag_eeBadScFilter;
   int Flag_ecalBadCalibFilter;
   int Flag_ecalBadCalibReducedMINIAODFilter;
+=======
+  int Flag_HBHENoiseFilter;
+  int Flag_HBHENoiseIsoFilter;
+  int Flag_CSCTightHaloFilter;
+  int Flag_CSCTightHaloTrkMuUnvetoFilter;
+  int Flag_CSCTightHalo2015Filter;
+  int Flag_HcalStripHaloFilter;
+  int Flag_hcalLaserEventFilter;
+  int Flag_EcalDeadCellTriggerPrimitiveFilter;
+  int Flag_EcalDeadCellBoundaryEnergyFilter;
+  int Flag_goodVertices;
+  int Flag_eeBadScFilter;
+  int Flag_ecalLaserCorrFilter;
+  int Flag_trkPOGFilters;
+  int Flag_chargedHadronTrackResolutionFilter;
+  int Flag_muonBadTrackFilter;
+  int Flag_trkPOG_manystripclus53X;
+  int Flag_trkPOG_toomanystripclus53X;
+  int Flag_trkPOG_logErrorTooManyClusters;
+  int Flag_METFilters;
+  int Flag_globalTightHalo2016Filter;
+  int Flag_BadPFMuonFilter;
+  int Flag_BadChargedCandidateFilter;
+  int Flag_ecalBadCalibFilter;
+>>>>>>> 16466bedeb36b70d7697022ad54df3ffe33ed547
   LHAPDF::PDFSet *read_PDFSet;
   std::vector<LHAPDF::PDF*> _systPDFs;
 };
